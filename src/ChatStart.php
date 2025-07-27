@@ -5,6 +5,10 @@ namespace Nigr\Chat;
 use Nigr\Chat\Controller\ChatController;
 use Nigr\Chat\Controller\MessageController;
 
+/**
+ * @used-by Router
+ * @noinspection PhpUnused
+ */
 class ChatStart
 {
     private ChatController $chatController;
@@ -17,6 +21,8 @@ class ChatStart
     }
 
     /**
+     * @used-by Router
+     * @noinspection PhpUnused
      * @param $id
      * @return array
      */
@@ -26,6 +32,8 @@ class ChatStart
     }
 
     /**
+     * @used-by Router
+     * @noinspection PhpUnused
      * @param $params
      * @return array
      */
@@ -35,6 +43,8 @@ class ChatStart
     }
 
     /**
+     * @used-by Router
+     * @noinspection PhpUnused
      * @return array
      */
     public function messageCreate(): array

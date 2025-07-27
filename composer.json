@@ -1,7 +1,7 @@
 {
   "name": "nigr/chat",
-  "description": "chat API for Portuguese",
-  "type": "project",
+  "description": "simple chat",
+  "type": "library",
   "license": "MIT",
   "authors": [
     {
@@ -19,6 +19,7 @@
     "ext-pdo": "*"
   },
   "require-dev": {
-    "phpunit/phpunit": "^10.5"
+    "phpunit/phpunit": "^10.5",
+    "nigr/router": "@dev"
   }
 }

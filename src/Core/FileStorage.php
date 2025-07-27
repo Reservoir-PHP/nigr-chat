@@ -12,7 +12,7 @@ class FileStorage
     private string $dirPath;
     private string $filePath;
     private string $nameStorage;
-    private array $data = [];
+    private array $data;
 
     public function __construct($nameStorage)
     {
@@ -81,7 +81,7 @@ class FileStorage
             throw new Exception("Unknown table");
         }
 
-        $newId = maxValueByKey($this->data, "id") + 1;
+        $newId = $this->maxId($this->data) + 1;
         $data['id'] = $newId;
         $this->data[] = $data;
 
@@ -137,5 +137,12 @@ class FileStorage
         }
 
         return array_values($array);
+    }
+
+    private function maxId($array): int
+    {
+        return array_reduce($array, function ($acc, $item) {
+            return ($acc < $item['id']) ? $item['id'] : $acc;
+        }, 1);
     }
 }

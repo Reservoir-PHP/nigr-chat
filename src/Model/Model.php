@@ -2,6 +2,7 @@
 
 namespace Nigr\Chat\Model;
 
+use Exception;
 use Nigr\Chat\Core\DBStorage;
 use Nigr\Chat\Core\FileStorage;
 
@@ -22,7 +23,7 @@ class Model
     /**
      * @param $data
      * @return array
-     * @throws \Exception
+     * @throws Exception
      */
     public function get($data): array
     {
@@ -32,7 +33,7 @@ class Model
     /**
      * @param $data
      * @return array
-     * @throws \Exception
+     * @throws Exception
      */
     public function post($data): array
     {
