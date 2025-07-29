@@ -1,6 +1,6 @@
 <?php
 
-namespace Nigr\Chat\Core;
+namespace Nigr\Chat\Repositories;
 
 use Exception;
 

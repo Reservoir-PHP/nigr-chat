@@ -23,12 +23,14 @@ class ChatStart
     /**
      * @used-by Router
      * @noinspection PhpUnused
-     * @param $id
+     * @param $params
      * @return array
      */
-    public function chatGet($id): array
+    public function chatGet($params): array
     {
-        return $this->chatController->get($id);
+        var_dump($params);
+        die();
+        return $this->chatController->get($params);
     }
 
     /**

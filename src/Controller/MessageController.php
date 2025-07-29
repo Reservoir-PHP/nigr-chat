@@ -15,6 +15,7 @@ class MessageController
 
     public function get($params): array
     {
+
         return $this->messageModel->get($params);
     }
 

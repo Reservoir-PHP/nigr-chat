@@ -18,8 +18,8 @@ class ChatController
         return $this->chatModel->get($params);
     }
 
-    public function post(): array
-    {
-        return $this->chatModel->post($_POST);
-    }
+//    public function post(): array
+//    {
+//        return $this->chatModel->post($_POST);
+//    }
 }

@@ -3,8 +3,8 @@
 namespace Nigr\Chat\Model;
 
 use Exception;
-use Nigr\Chat\Core\DBStorage;
-use Nigr\Chat\Core\FileStorage;
+use Nigr\Chat\Repositories\DBStorage;
+use Nigr\Chat\Repositories\FileStorage;
 
 class Model
 {

@@ -4,3 +4,4 @@ data
 index.php
 composer.lock
 .htaccess
+.env

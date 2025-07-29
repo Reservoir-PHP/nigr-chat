@@ -4,16 +4,14 @@
 ```bash
     composer require nigr/dotenv:@dev
 ```
-### Add to the .env file, variable 'dsn' for connect to DB:
-```php
-    $_ENV['dsn'] = [
-        'host' => '',
-        'dbname' => '',
-        'port' => '',
-        'charset' => '',
-        'username' => '',
-        'password' => ''
-    ];
+### Add to the .env file, DSN-variables for connect to DB:
+```.env
+    'DB_HOST' => '',
+    'DB_NAME' => '',
+    'DB_PORT' => '',
+    'DB_CHARSET' => '',
+    'DB_USERNAME' => '',
+    'DB_PASSWORD' => ''
 ```
 ### Add routes:
 - 'chatGet'(get chat, if chat not exists, then create chat),
@@ -38,4 +36,5 @@ Messages:
 Chats:
 - id: number
 - lot_id: number
+- contractor: string
 - executor: string
