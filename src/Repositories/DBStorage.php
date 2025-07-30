@@ -46,10 +46,9 @@ class DBStorage
 
         $result = $statement->fetchAll(PDO::FETCH_ASSOC);
 
-        if (count($params) === 0 || $this->table === "messages") return $result;
         if (count($result) === 0 && $this->table === "chats" && !$fromPost) return $this->post($params, true);
 
-        return reset($result) ?: [];
+        return $result;
     }
 
     /**
