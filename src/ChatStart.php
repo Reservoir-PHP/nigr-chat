@@ -2,13 +2,10 @@
 
 namespace Nigr\Chat;
 
+use Exception;
 use Nigr\Chat\Controller\ChatController;
 use Nigr\Chat\Controller\MessageController;
 
-/**
- * @used-by Router
- * @noinspection PhpUnused
- */
 class ChatStart
 {
     private ChatController $chatController;
@@ -21,23 +18,19 @@ class ChatStart
     }
 
     /**
-     * @used-by Router
-     * @noinspection PhpUnused
      * @param $params
      * @return array
+     * @throws Exception
      */
     public function chatGet($params): array
     {
-        var_dump($params);
-        die();
         return $this->chatController->get($params);
     }
 
     /**
-     * @used-by Router
-     * @noinspection PhpUnused
      * @param $params
      * @return array
+     * @throws Exception
      */
     public function messageGet($params): array
     {
@@ -45,9 +38,8 @@ class ChatStart
     }
 
     /**
-     * @used-by Router
-     * @noinspection PhpUnused
      * @return array
+     * @throws Exception
      */
     public function messageCreate(): array
     {

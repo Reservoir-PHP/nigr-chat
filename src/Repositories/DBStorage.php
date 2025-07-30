@@ -8,21 +8,17 @@ use PDOException;
 
 class DBStorage
 {
-    private array $dsn;
     private PDO $pdo;
     private string $table;
 
     public function __construct(string $table)
     {
         $this->table = $table;
-        $this->dsn = $_ENV;
-
-        var_dump($this->dsn);
 
         try {
-            $this->pdo = new PDO("mysql:host=" . $this->dsn["DB_HOST"] . ';dbname=' . $this->dsn['DB_NAME'] . ';port=' . $this->dsn['DB_PORT'] . ';charset=' . $this->dsn['DB_CHARSET'],
-                $this->dsn['DB_USERNAME'],
-                $this->dsn['DB_PASSWORD']
+            $this->pdo = new PDO("mysql:host=" . $_ENV["DB_HOST"] . ';dbname=' . $_ENV['DB_NAME'] . ';port=' . $_ENV['DB_PORT'] . ';charset=' . $_ENV['DB_CHARSET'],
+                $_ENV['DB_USERNAME'],
+                $_ENV['DB_PASSWORD']
             );
         } catch (PDOException $exception) {
             echo $exception->getMessage();
@@ -78,10 +74,10 @@ class DBStorage
 
             $statement = $this->pdo->prepare("INSERT INTO users(username, password, email, type) values(:username, :password, :email, :type)");
         } else if ($this->table === "chats") {
-//            if (!array_key_exists('lot_id', $data)) return ['status' => false, 'message' => 'Field lot_id is required!'];
-//            if (!array_key_exists('contractor', $data)) return ['status' => false, 'message' => 'Field contractor is required!'];
-//            if (!array_key_exists('executor', $data)) return ['status' => false, 'message' => 'Field executor is required!'];
-//            if (!$fromGet && count($this->get($data, true)) > 0) return ['status' => false, 'message' => "Row exists!"];
+            if (!array_key_exists('lot_id', $data)) return ['status' => false, 'message' => 'Field lot_id is required!'];
+            if (!array_key_exists('contractor', $data)) return ['status' => false, 'message' => 'Field contractor is required!'];
+            if (!array_key_exists('executor', $data)) return ['status' => false, 'message' => 'Field executor is required!'];
+            if (!$fromGet && count($this->get($data, true)) > 0) return ['status' => false, 'message' => "Row exists!"];
             $statement = $this->pdo->prepare("INSERT INTO chats(lot_id, contractor, executor) values(:lot_id, :contractor, :executor)");
         } else if ($this->table === "messages") {
             if (!array_key_exists('chat_id', $data)) return ['status' => false, 'message' => 'Field chat_id is required!'];
@@ -95,7 +91,6 @@ class DBStorage
         }
 
         try {
-            var_dump($data);
             $statement->execute($data);
 
             return $this->get($data ?? []);

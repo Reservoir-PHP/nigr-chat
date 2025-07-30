@@ -9,7 +9,7 @@ use Nigr\Chat\Repositories\FileStorage;
 class Model
 {
     protected string $type = "";
-    protected DBStorage|FileStorage $storage;
+    private DBStorage|FileStorage $storage;
 
     public function __construct($type = 'db')
     {

@@ -2,6 +2,7 @@
 
 namespace Nigr\Chat\Controller;
 
+use Exception;
 use Nigr\Chat\Model\ChatModel;
 
 class ChatController
@@ -13,13 +14,13 @@ class ChatController
         $this->chatModel = new ChatModel();
     }
 
+    /**
+     * @param $params
+     * @return array
+     * @throws Exception
+     */
     public function get($params): array
     {
         return $this->chatModel->get($params);
     }
-
-//    public function post(): array
-//    {
-//        return $this->chatModel->post($_POST);
-//    }
 }

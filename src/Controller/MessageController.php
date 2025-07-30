@@ -2,6 +2,7 @@
 
 namespace Nigr\Chat\Controller;
 
+use Exception;
 use Nigr\Chat\Model\MessageModel;
 
 class MessageController
@@ -13,12 +14,20 @@ class MessageController
         $this->messageModel = new MessageModel();
     }
 
+    /**
+     * @param $params
+     * @return array
+     * @throws Exception
+     */
     public function get($params): array
     {
-
         return $this->messageModel->get($params);
     }
 
+    /**
+     * @return array
+     * @throws Exception
+     */
     public function post(): array
     {
         $data = json_decode(file_get_contents("php://input"), true);

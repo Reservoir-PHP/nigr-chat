@@ -139,6 +139,10 @@ class FileStorage
         return array_values($array);
     }
 
+    /**
+     * @param $array
+     * @return int
+     */
     private function maxId($array): int
     {
         return array_reduce($array, function ($acc, $item) {
