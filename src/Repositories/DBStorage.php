@@ -33,9 +33,10 @@ class DBStorage
      */
     public function get(array $params, bool $fromPost = false): array
     {
-        if (array_key_exists("chat_id", $params)) $params['chat_id'] = intval($params['chat_id']);
+        if (array_key_exists('id', $params)) $params = ['id' => $params['id']];
 
         $queryString = $this->getQueryStringFromQueryParams($params);
+
         $statement = $this->pdo->prepare("SELECT * FROM $this->table $queryString");
 
         try {
@@ -46,9 +47,13 @@ class DBStorage
 
         $result = $statement->fetchAll(PDO::FETCH_ASSOC);
 
+        if (!reset($result) && array_key_exists('id', $params)) return [];
+
         if (count($result) === 0 && $this->table === "chats" && !$fromPost) return $this->post($params, true);
 
-        return $result;
+        if (count($result) === 0 && $this->table === "messages") return [];
+
+        return count($result) > 1 ? $result : reset($result);
     }
 
     /**
