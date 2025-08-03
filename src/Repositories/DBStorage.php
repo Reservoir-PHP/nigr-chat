@@ -47,13 +47,11 @@ class DBStorage
 
         $result = $statement->fetchAll(PDO::FETCH_ASSOC);
 
-        if (!reset($result) && array_key_exists('id', $params)) return [];
-
+//        if (!reset($result) && array_key_exists('id', $params)) return [];
         if (count($result) === 0 && $this->table === "chats" && !$fromPost) return $this->post($params, true);
-
-        if (count($result) === 0 && $this->table === "messages") return [];
-
-        return count($result) > 1 ? $result : reset($result);
+//        if (count($result) === 0 && $this->table === "messages") return [];
+//        return count($result) > 1 ? $result : reset($result);
+        return $result;
     }
 
     /**
