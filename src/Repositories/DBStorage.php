@@ -47,10 +47,8 @@ class DBStorage
 
         $result = $statement->fetchAll(PDO::FETCH_ASSOC);
 
-//        if (!reset($result) && array_key_exists('id', $params)) return [];
-        if (count($result) === 0 && $this->table === "chats" && !$fromPost) return $this->post($params, true);
-//        if (count($result) === 0 && $this->table === "messages") return [];
-//        return count($result) > 1 ? $result : reset($result);
+        if (count($result) === 0 && $this->table === "chats" && !$fromPost && array_key_exists('executor', $params)) return $this->post($params, true);
+
         return $result;
     }
 
@@ -77,7 +75,7 @@ class DBStorage
             $statement = $this->pdo->prepare("INSERT INTO users(username, password, email, type) values(:username, :password, :email, :type)");
         } else if ($this->table === "chats") {
             if (!array_key_exists('lot_id', $data)) return ['status' => false, 'message' => 'Field lot_id is required!'];
-//            if (!array_key_exists('contractor', $data)) return ['status' => false, 'message' => 'Field contractor is required!'];
+            if (!array_key_exists('contractor', $data)) return ['status' => false, 'message' => 'Field contractor is required!'];
 //            if (!array_key_exists('executor', $data)) return ['status' => false, 'message' => 'Field executor is required!'];
             if (!$fromGet && count($this->get($data, true)) > 0) return ['status' => false, 'message' => "Row exists!"];
             $statement = $this->pdo->prepare("INSERT INTO chats(lot_id, contractor, executor) values(:lot_id, :contractor, :executor)");
