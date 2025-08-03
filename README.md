@@ -36,5 +36,7 @@ Messages:
 Chats:
 - id: number
 - lot_id: number
-- contractor: string
-- executor: string
+- contractor_id: number
+- executor_id: number
+- created_at: number
+- updated_at: number
