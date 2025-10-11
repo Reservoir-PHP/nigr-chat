@@ -29,14 +29,14 @@ Messages:
 - id: number AI
 - chat_id: number
 - owner: string
-- recipient?: string
 - text: string
-- created_at: timestamp
-- updated_at: timestamp
+- recipient?: string
+- created_at?: timestamp
+- updated_at?: timestamp
 Chats:
 - id: number
 - lot_id: number
 - contractor_id: number
-- executor_id: number
-- created_at: number
-- updated_at: number
+- executor_id?: number
+- created_at?: timestamp
+- updated_at?: timestamp

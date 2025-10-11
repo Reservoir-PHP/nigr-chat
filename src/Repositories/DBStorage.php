@@ -8,113 +8,123 @@ use PDOException;
 
 class DBStorage
 {
-    private PDO $pdo;
-    private string $table;
+	private PDO $pdo;
+	private string $table;
 
-    public function __construct(string $table)
-    {
-        $this->table = $table;
+	public function __construct(string $table)
+	{
+		$this->table = $table;
 
-        try {
-            $this->pdo = new PDO("mysql:host=" . $_ENV["DB_HOST"] . ';dbname=' . $_ENV['DB_NAME'] . ';port=' . $_ENV['DB_PORT'] . ';charset=' . $_ENV['DB_CHARSET'],
-                $_ENV['DB_USERNAME'],
-                $_ENV['DB_PASSWORD']
-            );
-        } catch (PDOException $exception) {
-            echo $exception->getMessage();
-        }
-    }
+		try {
+			$this->pdo = new PDO("mysql:host=" . $_ENV["DB_HOST"] . ';dbname=' . $_ENV['DB_NAME'] . ';port=' . $_ENV['DB_PORT'] . ';charset=' . $_ENV['DB_CHARSET'],
+				$_ENV['DB_USERNAME'],
+				$_ENV['DB_PASSWORD']
+			);
+		} catch (PDOException $exception) {
+			echo $exception->getMessage();
+		}
+	}
 
-    /**
-     * @param array $params
-     * @param bool $fromPost
-     * @return array|bool[]
-     * @throws Exception
-     */
-    public function get(array $params, bool $fromPost = false): array
-    {
-        if (array_key_exists('id', $params)) $params = ['id' => $params['id']];
+	/**
+	 * @param array $params
+	 * @param bool $fromPost
+	 * @return array|bool[]
+	 * @throws Exception
+	 */
+	public function get(array $params, bool $fromPost = false): array
+	{
+		if (array_key_exists('id', $params)) $params = ['id' => $params['id']];
 
-        $queryString = $this->getQueryStringFromQueryParams($params);
+		$queryString = $this->getQueryStringFromQueryParams($params);
 
-        $statement = $this->pdo->prepare("SELECT * FROM $this->table $queryString");
+		$statement = $this->pdo->prepare("SELECT * FROM $this->table $queryString");
 
-        try {
-            $statement->execute($params);
-        } catch (PDOException $exception) {
-            echo $exception->getMessage();
-        }
+		try {
+			$statement->execute($params);
+		} catch (PDOException $exception) {
+			echo $exception->getMessage();
+		}
 
-        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+		$result = $statement->fetchAll(PDO::FETCH_ASSOC);
 
-        if (count($result) === 0 && $this->table === "chats" && !$fromPost && array_key_exists('executor', $params)) return $this->post($params, true);
+		if (count($result) === 0 && $this->table === "chats" && !$fromPost && array_key_exists('executor_id', $params)) return $this->post($params, true);
 
-        return $result;
-    }
+		return $result;
+	}
 
-    /**
-     * @param array $data
-     * @param bool $fromGet
-     * @return array|bool[]
-     * @throws Exception
-     */
-    public function post(array $data, bool $fromGet = false): array
-    {
-        if ($this->table === "users") {
-            if (!array_key_exists('username', $data)) return ['status' => false, 'message' => 'Field username is required!'];
-            if (!array_key_exists('password', $data)) return ['status' => false, 'message' => 'Field password is required!'];
-            if (!array_key_exists('email', $data)) return ['status' => false, 'message' => 'Field email is required!'];
-            if (!array_key_exists('type', $data)) return ['status' => false, 'message' => 'Field type is required!'];
+	/**
+	 * @param array $data
+	 * @param bool $fromGet
+	 * @return array|bool[]
+	 * @throws Exception
+	 */
+	public function post(array $data, bool $fromGet = false): array
+	{
+		$queryString = $this->getQueryStringFromQueryParams($data, "insert");
 
-            $params = ['email' => $data['email']];
+		if ($this->table === "chats") {
+			if (!array_key_exists('lot_id', $data)) return ['status' => false, 'message' => 'Field lot_id is required!'];
+			if (!array_key_exists('contractor_id', $data)) return ['status' => false, 'message' => 'Field contractor is required!'];
+			if (!$fromGet && count($this->get($data, true)) > 0) return ['status' => false, 'message' => "Row exists!"];
 
-            $existEntity = $this->get($params);
 
-            if (count($existEntity) > 1) return ["status" => false, "message" => "Entity exists!"];
+			$statement = $this->pdo->prepare("INSERT INTO chats $queryString");
+		} else if ($this->table === "messages") {
+			if (!array_key_exists('chat_id', $data)) return ['status' => false, 'message' => 'Field chat_id is required!'];
+			if (!array_key_exists('owner', $data)) return ['status' => false, 'message' => 'Field owner is required!'];
+			if (!array_key_exists('text', $data)) return ['status' => false, 'message' => 'Field text is required!'];
 
-            $statement = $this->pdo->prepare("INSERT INTO users(username, password, email, type) values(:username, :password, :email, :type)");
-        } else if ($this->table === "chats") {
-            if (!array_key_exists('lot_id', $data)) return ['status' => false, 'message' => 'Field lot_id is required!'];
-            if (!array_key_exists('contractor', $data)) return ['status' => false, 'message' => 'Field contractor is required!'];
-//            if (!array_key_exists('executor', $data)) return ['status' => false, 'message' => 'Field executor is required!'];
-            if (!$fromGet && count($this->get($data, true)) > 0) return ['status' => false, 'message' => "Row exists!"];
-            $statement = $this->pdo->prepare("INSERT INTO chats(lot_id, contractor, executor) values(:lot_id, :contractor, :executor)");
-        } else if ($this->table === "messages") {
-            if (!array_key_exists('chat_id', $data)) return ['status' => false, 'message' => 'Field chat_id is required!'];
-            if (!array_key_exists('owner', $data)) return ['status' => false, 'message' => 'Field owner is required!'];
-            if (!array_key_exists('recipient', $data)) return ['status' => false, 'message' => 'Field recipient is required!'];
-            if (!array_key_exists('text', $data)) return ['status' => false, 'message' => 'Field text is required!'];
+			$statement = $this->pdo->prepare("INSERT INTO messages $queryString");
+		} else {
+			throw new Exception("Unknown table");
+		}
 
-            $statement = $this->pdo->prepare("INSERT INTO messages(chat_id, owner, recipient, text) values(:chat_id, :owner, :recipient, :text)");
-        } else {
-            throw new Exception("Unknown table");
-        }
+		try {
+			$statement->execute($data);
 
-        try {
-            $statement->execute($data);
+			return $this->get($data ?? []);
+		} catch (PDOException $exception) {
+			echo $exception->getMessage();
+		}
 
-            return $this->get($data ?? []);
-        } catch (PDOException $exception) {
-            echo $exception->getMessage();
-        }
+		return ["status" => true];
+	}
 
-        return ["status" => true];
-    }
+	/**
+	 * @param array $queryParams
+	 * @param string $key
+	 * @return string
+	 */
+	function getQueryStringFromQueryParams(array $queryParams, string $key = 'select'): string
+	{
+		$queryString = '';
 
-    /**
-     * @param array $queryParams
-     * @return string
-     */
-    function getQueryStringFromQueryParams(array $queryParams): string
-    {
-        if ($queryParams === []) return '';
+		if ($queryParams === []) return $queryString;
 
-        $string = 'WHERE ';
+		if ($key === "insert") {
+			$column = "";
+			$values = "";
 
-        foreach ($queryParams as $key => $param) {
-            $string .= "$key=:$key AND ";
-        }
+			foreach ($queryParams as $key => $param) {
+				$column .= "$key, ";
+				$values .= ":$key, ";
+			}
 
-        return trim($string, "AND ");
-    }
+			$column = trim($column, ", ");
+			$values = trim($values, ", ");
+
+			$queryString = "($column) values($values)";
+
+		} else {
+			$queryString = 'WHERE ';
+
+			foreach ($queryParams as $key => $param) {
+				$queryString .= "$key=:$key AND ";
+			}
+
+			$queryString = trim($queryString, "AND ");
+		}
+
+		return $queryString;
+	}
 }
