@@ -27,11 +27,10 @@ class DBStorage
 
 	/**
 	 * @param array $params
-	 * @param bool $fromPost
-	 * @return array|bool[]
+	 * @return array
 	 * @throws Exception
 	 */
-	public function get(array $params, bool $fromPost = false): array
+	public function get(array $params): array
 	{
 		if (array_key_exists('id', $params)) $params = ['id' => $params['id']];
 
@@ -47,26 +46,24 @@ class DBStorage
 
 		$result = $statement->fetchAll(PDO::FETCH_ASSOC);
 
-		if (count($result) === 0 && $this->table === "chats" && !$fromPost && array_key_exists('executor_id', $params)) return $this->post($params, true);
+		if (!$result || count($result) === 0) return ["status" => false, "message" => "Not found!", "data" => []];
 
-		return $result;
+		return ["status" => true, "message" => "Request done!", "data" => $result];
 	}
 
 	/**
 	 * @param array $data
-	 * @param bool $fromGet
 	 * @return array|bool[]
 	 * @throws Exception
 	 */
-	public function post(array $data, bool $fromGet = false): array
+	public function post(array $data): array
 	{
 		$queryString = $this->getQueryStringFromQueryParams($data, "insert");
 
 		if ($this->table === "chats") {
 			if (!array_key_exists('lot_id', $data)) return ['status' => false, 'message' => 'Field lot_id is required!'];
 			if (!array_key_exists('contractor_id', $data)) return ['status' => false, 'message' => 'Field contractor is required!'];
-			if (!$fromGet && count($this->get($data, true)) > 0) return ['status' => false, 'message' => "Row exists!"];
-
+			if (count($this->get($data)["data"]) > 0) return ['status' => false, 'message' => "Row exists!"];
 
 			$statement = $this->pdo->prepare("INSERT INTO chats $queryString");
 		} else if ($this->table === "messages") {
@@ -81,13 +78,13 @@ class DBStorage
 
 		try {
 			$statement->execute($data);
-
-			return $this->get($data ?? []);
-		} catch (PDOException $exception) {
-			echo $exception->getMessage();
+		} catch (PDOException $e) {
+			echo $e->getMessage();
+			return ["status" => false, "message" => $e->getMessage(), "data" => []];
 		}
+		$result = $this->get($data);
 
-		return ["status" => true];
+		return ["status" => true, "message" => "", "data" => $result["data"]];
 	}
 
 	/**

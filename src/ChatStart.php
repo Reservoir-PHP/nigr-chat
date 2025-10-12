@@ -27,6 +27,20 @@ class ChatStart
         return $this->chatController->get($params);
     }
 
+	/**
+	 * @param $params
+	 * @return array
+	 * @throws Exception
+	 */
+		public function chatPost($params): array
+    {
+			if (!$params) {
+				$params = $_POST;
+			}
+
+			return $this->chatController->post($params);
+    }
+
     /**
      * @param $params
      * @return array
