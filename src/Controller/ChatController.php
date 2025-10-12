@@ -23,4 +23,14 @@ class ChatController
     {
         return $this->chatModel->get($params);
     }
+
+	/**
+	 * @param $params
+	 * @return array
+	 * @throws Exception
+	 */
+		public function post($params): array
+    {
+        return $this->chatModel->post($params);
+    }
 }
