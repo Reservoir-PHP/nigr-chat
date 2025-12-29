@@ -1,0 +1,16 @@
+[28-Dec-2025 16:58:26 Europe/Moscow] PHP Fatal error:  Uncaught Error: Typed property Nigr\Chat\Repositories\DBStorage::$pdo must not be accessed before initialization in C:\OSPanel\domains\nigr-chat\src\Repositories\DBStorage.php:39
+Stack trace:
+#0 C:\OSPanel\domains\nigr-chat\src\Model\Model.php(30): Nigr\Chat\Repositories\DBStorage->get()
+#1 C:\OSPanel\domains\nigr-chat\src\Controller\ChatController.php(24): Nigr\Chat\Model\Model->get()
+#2 C:\OSPanel\domains\nigr-chat\src\ChatStart.php(27): Nigr\Chat\Controller\ChatController->get()
+#3 C:\OSPanel\domains\nigr-chat\index.php(39): Nigr\Chat\ChatStart->chatGet()
+#4 {main}
+  thrown in C:\OSPanel\domains\nigr-chat\src\Repositories\DBStorage.php on line 39
+[28-Dec-2025 16:59:06 Europe/Moscow] PHP Fatal error:  Uncaught Error: Typed property Nigr\Chat\Repositories\DBStorage::$pdo must not be accessed before initialization in C:\OSPanel\domains\nigr-chat\src\Repositories\DBStorage.php:39
+Stack trace:
+#0 C:\OSPanel\domains\nigr-chat\src\Model\Model.php(30): Nigr\Chat\Repositories\DBStorage->get()
+#1 C:\OSPanel\domains\nigr-chat\src\Controller\ChatController.php(24): Nigr\Chat\Model\Model->get()
+#2 C:\OSPanel\domains\nigr-chat\src\ChatStart.php(27): Nigr\Chat\Controller\ChatController->get()
+#3 C:\OSPanel\domains\nigr-chat\index.php(39): Nigr\Chat\ChatStart->chatGet()
+#4 {main}
+  thrown in C:\OSPanel\domains\nigr-chat\src\Repositories\DBStorage.php on line 39

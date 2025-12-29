@@ -84,7 +84,7 @@ class DBStorage
 		}
 		$result = $this->get($data);
 
-		return ["status" => true, "message" => "", "data" => $result["data"]];
+		return ["status" => true, "message" => "Created!", "data" => $result["data"]];
 	}
 
 	/**
