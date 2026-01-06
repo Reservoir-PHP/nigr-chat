@@ -26,6 +26,15 @@
 
 ### Prepare DB:
 
+Chats:
+
+- id: number
+- lot_id: number
+- contractor_id: number
+- executor_id?: number
+- created_at?: timestamp
+- updated_at?: timestamp
+
 Messages:
 
 - id: number AI
@@ -36,14 +45,19 @@ Messages:
 - created_at?: timestamp
 - updated_at?: timestamp
 
-Chats:
+## GET DATA
 
-- id: number
-- lot_id: number
-- contractor_id: number
-- executor_id?: number
-- created_at?: timestamp
-- updated_at?: timestamp
+- chat get = id?, lot_id?, contractor_id?, executor_id?
+- chat post = lot_id, contractor_id, executor_id
+- message get = id?, chat_id?, owner?, text?, recipient?
+- message post = chat_id, owner, text, recipient?
+
+"WHERE chat_id=:chat_id"
+
+## RETURN DATA
+
+- ["status" => true, "message" => "!", "data" => [];
+- ["status" => false, "message" => "!", "data" => [];
 
 --------------------------------------------
 

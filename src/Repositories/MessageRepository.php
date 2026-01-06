@@ -1,0 +1,57 @@
+<?php
+
+namespace Nigr\Chat\Repositories;
+
+use Nigr\Chat\Helpers\DataBase;
+use Nigr\Chat\Models\Message;
+use PDO;
+
+class MessageRepository
+{
+	private DataBase $helpers;
+	private PDO $pdo;
+
+	public function __construct(PDO $pdo)
+	{
+		$this->helpers = new DataBase();
+		$this->pdo = $pdo;
+	}
+
+	/**
+	 * @param array $params
+	 * @return Message[]
+	 */
+	public function get(array $params): array
+	{
+		$rawRequest = $this->helpers->getQueryStringFromQueryParams($params);
+
+		$statement = $this->pdo->prepare("SELECT * FROM messages $rawRequest");
+		$statement->execute($params);
+		$messages = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+		return array_map(fn(array $message) => new Message(
+			(int)$messages[0]['id'],
+			(int)$messages[0]['chat_id'],
+			(int)$messages[0]['owner'],
+			(string)$messages[0]['text'],
+			(int)$messages[0]['recipient'],
+			(string)$messages[0]['created_at'],
+			(string)$messages[0]['updated_at'],
+		), $messages);
+	}
+
+	/**
+	 * @param array $params
+	 * @return Message[]
+	 */
+	public function post(array $params): array
+	{
+		$rawRequest = $this->helpers->getQueryStringFromQueryParams($params, 'insert');
+
+		$statement = $this->pdo->prepare("INSERT INTO messages $rawRequest");
+		$statement->execute($params);
+		$messageId = $this->pdo->lastInsertId();
+
+		return $this->get(["id" => $messageId]);
+	}
+}

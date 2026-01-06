@@ -1,16 +1,276 @@
-[28-Dec-2025 16:58:26 Europe/Moscow] PHP Fatal error:  Uncaught Error: Typed property Nigr\Chat\Repositories\DBStorage::$pdo must not be accessed before initialization in C:\OSPanel\domains\nigr-chat\src\Repositories\DBStorage.php:39
+[31-Dec-2025 20:19:03 Europe/Moscow] PHP Fatal error:  Uncaught Error: Class "Nigr\Chat\Controller\ChatService" not found in C:\OSPanel\domains\nigr-chat\src\Chat.php:16
 Stack trace:
-#0 C:\OSPanel\domains\nigr-chat\src\Model\Model.php(30): Nigr\Chat\Repositories\DBStorage->get()
-#1 C:\OSPanel\domains\nigr-chat\src\Controller\ChatController.php(24): Nigr\Chat\Model\Model->get()
-#2 C:\OSPanel\domains\nigr-chat\src\ChatStart.php(27): Nigr\Chat\Controller\ChatController->get()
-#3 C:\OSPanel\domains\nigr-chat\index.php(39): Nigr\Chat\ChatStart->chatGet()
-#4 {main}
-  thrown in C:\OSPanel\domains\nigr-chat\src\Repositories\DBStorage.php on line 39
-[28-Dec-2025 16:59:06 Europe/Moscow] PHP Fatal error:  Uncaught Error: Typed property Nigr\Chat\Repositories\DBStorage::$pdo must not be accessed before initialization in C:\OSPanel\domains\nigr-chat\src\Repositories\DBStorage.php:39
+#0 C:\OSPanel\domains\nigr-chat\index.php(40): Nigr\Chat\Chat->__construct()
+#1 {main}
+  thrown in C:\OSPanel\domains\nigr-chat\src\Chat.php on line 16
+[31-Dec-2025 21:08:31 Europe/Moscow] PHP Fatal error:  Uncaught Error: Call to undefined method Nigr\Chat\ChatApi::chatGet() in C:\OSPanel\domains\nigr-chat\index.php:47
 Stack trace:
-#0 C:\OSPanel\domains\nigr-chat\src\Model\Model.php(30): Nigr\Chat\Repositories\DBStorage->get()
-#1 C:\OSPanel\domains\nigr-chat\src\Controller\ChatController.php(24): Nigr\Chat\Model\Model->get()
-#2 C:\OSPanel\domains\nigr-chat\src\ChatStart.php(27): Nigr\Chat\Controller\ChatController->get()
-#3 C:\OSPanel\domains\nigr-chat\index.php(39): Nigr\Chat\ChatStart->chatGet()
-#4 {main}
-  thrown in C:\OSPanel\domains\nigr-chat\src\Repositories\DBStorage.php on line 39
+#0 {main}
+  thrown in C:\OSPanel\domains\nigr-chat\index.php on line 47
+[31-Dec-2025 21:13:55 Europe/Moscow] PHP Fatal error:  Uncaught TypeError: Nigr\Chat\ChatApi::readChats(): Argument #1 ($chatId) must be of type ?int, array given, called in C:\OSPanel\domains\nigr-chat\index.php on line 47 and defined in C:\OSPanel\domains\nigr-chat\src\ChatApi.php:23
+Stack trace:
+#0 C:\OSPanel\domains\nigr-chat\index.php(47): Nigr\Chat\ChatApi->readChats()
+#1 {main}
+  thrown in C:\OSPanel\domains\nigr-chat\src\ChatApi.php on line 23
+[31-Dec-2025 22:29:24 Europe/Moscow] PHP Fatal error:  Uncaught TypeError: Nigr\Chat\Models\Chat::__construct(): Argument #1 ($chatId) must be of type ?int, array given, called in C:\OSPanel\domains\nigr-chat\src\ChatApi.php on line 32 and defined in C:\OSPanel\domains\nigr-chat\src\Models\Chat.php:7
+Stack trace:
+#0 C:\OSPanel\domains\nigr-chat\src\ChatApi.php(32): Nigr\Chat\Models\Chat->__construct()
+#1 C:\OSPanel\domains\nigr-chat\index.php(47): Nigr\Chat\ChatApi->readChats()
+#2 {main}
+  thrown in C:\OSPanel\domains\nigr-chat\src\Models\Chat.php on line 7
+[31-Dec-2025 22:43:35 Europe/Moscow] PHP Fatal error:  Uncaught TypeError: Only arrays and Traversables can be unpacked in C:\OSPanel\domains\nigr-chat\src\ChatApi.php:31
+Stack trace:
+#0 [internal function]: Nigr\Chat\ChatApi->Nigr\Chat\{closure}()
+#1 C:\OSPanel\domains\nigr-chat\src\ChatApi.php(31): array_map()
+#2 C:\OSPanel\domains\nigr-chat\index.php(47): Nigr\Chat\ChatApi->readChats()
+#3 {main}
+  thrown in C:\OSPanel\domains\nigr-chat\src\ChatApi.php on line 31
+[31-Dec-2025 23:14:52 Europe/Moscow] PHP Fatal error:  Uncaught TypeError: Nigr\Chat\ChatApi::readMessages(): Argument #1 ($chatId) must be of type int, array given, called in C:\OSPanel\domains\nigr-chat\index.php on line 47 and defined in C:\OSPanel\domains\nigr-chat\src\ChatApi.php:39
+Stack trace:
+#0 C:\OSPanel\domains\nigr-chat\index.php(47): Nigr\Chat\ChatApi->readMessages()
+#1 {main}
+  thrown in C:\OSPanel\domains\nigr-chat\src\ChatApi.php on line 39
+[31-Dec-2025 23:15:11 Europe/Moscow] PHP Fatal error:  Uncaught TypeError: Nigr\Chat\ChatApi::readMessages(): Argument #1 ($chatId) must be of type int, array given, called in C:\OSPanel\domains\nigr-chat\index.php on line 47 and defined in C:\OSPanel\domains\nigr-chat\src\ChatApi.php:39
+Stack trace:
+#0 C:\OSPanel\domains\nigr-chat\index.php(47): Nigr\Chat\ChatApi->readMessages()
+#1 {main}
+  thrown in C:\OSPanel\domains\nigr-chat\src\ChatApi.php on line 39
+[31-Dec-2025 23:28:24 Europe/Moscow] PHP Fatal error:  Uncaught Error: Unknown named parameter $lot_id in C:\OSPanel\domains\nigr-chat\src\ChatApi.php:36
+Stack trace:
+#0 [internal function]: Nigr\Chat\ChatApi->Nigr\Chat\{closure}()
+#1 C:\OSPanel\domains\nigr-chat\src\ChatApi.php(36): array_map()
+#2 C:\OSPanel\domains\nigr-chat\index.php(47): Nigr\Chat\ChatApi->readChats()
+#3 {main}
+  thrown in C:\OSPanel\domains\nigr-chat\src\ChatApi.php on line 36
+[31-Dec-2025 23:39:51 Europe/Moscow] PHP Fatal error:  Uncaught Error: Unknown named parameter $lot_id in C:\OSPanel\domains\nigr-chat\src\ChatApi.php:36
+Stack trace:
+#0 [internal function]: Nigr\Chat\ChatApi->Nigr\Chat\{closure}()
+#1 C:\OSPanel\domains\nigr-chat\src\ChatApi.php(36): array_map()
+#2 C:\OSPanel\domains\nigr-chat\index.php(47): Nigr\Chat\ChatApi->readChats()
+#3 {main}
+  thrown in C:\OSPanel\domains\nigr-chat\src\ChatApi.php on line 36
+[31-Dec-2025 23:42:16 Europe/Moscow] PHP Fatal error:  Uncaught Error: Unknown named parameter $lot_id in C:\OSPanel\domains\nigr-chat\src\ChatApi.php:38
+Stack trace:
+#0 [internal function]: Nigr\Chat\ChatApi->Nigr\Chat\{closure}()
+#1 C:\OSPanel\domains\nigr-chat\src\ChatApi.php(36): array_map()
+#2 C:\OSPanel\domains\nigr-chat\index.php(47): Nigr\Chat\ChatApi->readChats()
+#3 {main}
+  thrown in C:\OSPanel\domains\nigr-chat\src\ChatApi.php on line 38
+[31-Dec-2025 23:43:00 Europe/Moscow] PHP Fatal error:  Uncaught Error: Unknown named parameter $lot_id in C:\OSPanel\domains\nigr-chat\src\ChatApi.php:38
+Stack trace:
+#0 [internal function]: Nigr\Chat\ChatApi->Nigr\Chat\{closure}()
+#1 C:\OSPanel\domains\nigr-chat\src\ChatApi.php(36): array_map()
+#2 C:\OSPanel\domains\nigr-chat\index.php(47): Nigr\Chat\ChatApi->readChats()
+#3 {main}
+  thrown in C:\OSPanel\domains\nigr-chat\src\ChatApi.php on line 38
+[01-Jan-2026 14:39:44 Europe/Moscow] PHP Fatal error:  Uncaught TypeError: Nigr\Chat\Repositories\MessageRepository::get(): Argument #1 ($params) must be of type array, string given, called in C:\OSPanel\domains\nigr-chat\src\ChatApi.php on line 47 and defined in C:\OSPanel\domains\nigr-chat\src\Repositories\MessageRepository.php:19
+Stack trace:
+#0 C:\OSPanel\domains\nigr-chat\src\ChatApi.php(47): Nigr\Chat\Repositories\MessageRepository->get()
+#1 C:\OSPanel\domains\nigr-chat\index.php(47): Nigr\Chat\ChatApi->readMessages()
+#2 {main}
+  thrown in C:\OSPanel\domains\nigr-chat\src\Repositories\MessageRepository.php on line 19
+[01-Jan-2026 15:55:11 Europe/Moscow] PHP Fatal error:  Uncaught TypeError: Nigr\Chat\Repositories\ChatRepository::post(): Return value must be of type Nigr\Chat\Models\Chat, array returned in C:\OSPanel\domains\nigr-chat\src\Repositories\ChatRepository.php:39
+Stack trace:
+#0 C:\OSPanel\domains\nigr-chat\src\ChatApi.php(38): Nigr\Chat\Repositories\ChatRepository->post()
+#1 C:\OSPanel\domains\nigr-chat\index.php(47): Nigr\Chat\ChatApi->createChat()
+#2 {main}
+  thrown in C:\OSPanel\domains\nigr-chat\src\Repositories\ChatRepository.php on line 39
+[01-Jan-2026 16:04:21 Europe/Moscow] PHP Fatal error:  Uncaught TypeError: Nigr\Chat\ChatApi::createChat(): Return value must be of type Nigr\Chat\Models\Chat, array returned in C:\OSPanel\domains\nigr-chat\src\ChatApi.php:38
+Stack trace:
+#0 C:\OSPanel\domains\nigr-chat\index.php(47): Nigr\Chat\ChatApi->createChat()
+#1 {main}
+  thrown in C:\OSPanel\domains\nigr-chat\src\ChatApi.php on line 38
+[01-Jan-2026 16:06:21 Europe/Moscow] PHP Fatal error:  Uncaught TypeError: Nigr\Chat\ChatApi::createChat(): Return value must be of type Nigr\Chat\Models\Chat, array returned in C:\OSPanel\domains\nigr-chat\src\ChatApi.php:38
+Stack trace:
+#0 C:\OSPanel\domains\nigr-chat\index.php(47): Nigr\Chat\ChatApi->createChat()
+#1 {main}
+  thrown in C:\OSPanel\domains\nigr-chat\src\ChatApi.php on line 38
+[01-Jan-2026 16:09:26 Europe/Moscow] PHP Fatal error:  Uncaught TypeError: Nigr\Chat\Repositories\ChatRepository::post(): Return value must be of type Nigr\Chat\Models\Chat, array returned in C:\OSPanel\domains\nigr-chat\src\Repositories\ChatRepository.php:48
+Stack trace:
+#0 C:\OSPanel\domains\nigr-chat\src\ChatApi.php(38): Nigr\Chat\Repositories\ChatRepository->post()
+#1 C:\OSPanel\domains\nigr-chat\index.php(47): Nigr\Chat\ChatApi->createChat()
+#2 {main}
+  thrown in C:\OSPanel\domains\nigr-chat\src\Repositories\ChatRepository.php on line 48
+[01-Jan-2026 16:10:15 Europe/Moscow] PHP Fatal error:  Uncaught TypeError: Nigr\Chat\Repositories\ChatRepository::post(): Return value must be of type Nigr\Chat\Models\Chat, array returned in C:\OSPanel\domains\nigr-chat\src\Repositories\ChatRepository.php:48
+Stack trace:
+#0 C:\OSPanel\domains\nigr-chat\src\ChatApi.php(41): Nigr\Chat\Repositories\ChatRepository->post()
+#1 C:\OSPanel\domains\nigr-chat\index.php(47): Nigr\Chat\ChatApi->createChat()
+#2 {main}
+  thrown in C:\OSPanel\domains\nigr-chat\src\Repositories\ChatRepository.php on line 48
+[01-Jan-2026 16:11:06 Europe/Moscow] PHP Fatal error:  Uncaught TypeError: Nigr\Chat\Repositories\ChatRepository::post(): Return value must be of type Nigr\Chat\Models\Chat, array returned in C:\OSPanel\domains\nigr-chat\src\Repositories\ChatRepository.php:48
+Stack trace:
+#0 C:\OSPanel\domains\nigr-chat\src\ChatApi.php(41): Nigr\Chat\Repositories\ChatRepository->post()
+#1 C:\OSPanel\domains\nigr-chat\index.php(47): Nigr\Chat\ChatApi->createChat()
+#2 {main}
+  thrown in C:\OSPanel\domains\nigr-chat\src\Repositories\ChatRepository.php on line 48
+[01-Jan-2026 16:15:00 Europe/Moscow] PHP Warning:  Undefined array key "id" in C:\OSPanel\domains\nigr-chat\src\Repositories\ChatRepository.php on line 49
+[01-Jan-2026 16:15:00 Europe/Moscow] PHP Warning:  Undefined array key "lot_id" in C:\OSPanel\domains\nigr-chat\src\Repositories\ChatRepository.php on line 50
+[01-Jan-2026 16:15:00 Europe/Moscow] PHP Warning:  Undefined array key "contractor_id" in C:\OSPanel\domains\nigr-chat\src\Repositories\ChatRepository.php on line 51
+[01-Jan-2026 16:15:00 Europe/Moscow] PHP Warning:  Undefined array key "executor_id" in C:\OSPanel\domains\nigr-chat\src\Repositories\ChatRepository.php on line 52
+[01-Jan-2026 16:15:10 Europe/Moscow] PHP Warning:  Undefined array key "id" in C:\OSPanel\domains\nigr-chat\src\Repositories\ChatRepository.php on line 49
+[01-Jan-2026 16:15:10 Europe/Moscow] PHP Warning:  Undefined array key "lot_id" in C:\OSPanel\domains\nigr-chat\src\Repositories\ChatRepository.php on line 50
+[01-Jan-2026 16:15:10 Europe/Moscow] PHP Warning:  Undefined array key "contractor_id" in C:\OSPanel\domains\nigr-chat\src\Repositories\ChatRepository.php on line 51
+[01-Jan-2026 16:15:10 Europe/Moscow] PHP Warning:  Undefined array key "executor_id" in C:\OSPanel\domains\nigr-chat\src\Repositories\ChatRepository.php on line 52
+[01-Jan-2026 16:23:14 Europe/Moscow] PHP Fatal error:  Uncaught TypeError: Nigr\Chat\Repositories\MessageRepository::post(): Argument #1 ($params) must be of type array, stdClass given, called in C:\OSPanel\domains\nigr-chat\src\ChatApi.php on line 62 and defined in C:\OSPanel\domains\nigr-chat\src\Repositories\MessageRepository.php:47
+Stack trace:
+#0 C:\OSPanel\domains\nigr-chat\src\ChatApi.php(62): Nigr\Chat\Repositories\MessageRepository->post()
+#1 C:\OSPanel\domains\nigr-chat\index.php(47): Nigr\Chat\ChatApi->createMessage()
+#2 {main}
+  thrown in C:\OSPanel\domains\nigr-chat\src\Repositories\MessageRepository.php on line 47
+[01-Jan-2026 16:23:50 Europe/Moscow] PHP Fatal error:  Uncaught TypeError: Nigr\Chat\Repositories\MessageRepository::post(): Argument #1 ($params) must be of type array, stdClass given, called in C:\OSPanel\domains\nigr-chat\src\ChatApi.php on line 63 and defined in C:\OSPanel\domains\nigr-chat\src\Repositories\MessageRepository.php:47
+Stack trace:
+#0 C:\OSPanel\domains\nigr-chat\src\ChatApi.php(63): Nigr\Chat\Repositories\MessageRepository->post()
+#1 C:\OSPanel\domains\nigr-chat\index.php(47): Nigr\Chat\ChatApi->createMessage()
+#2 {main}
+  thrown in C:\OSPanel\domains\nigr-chat\src\Repositories\MessageRepository.php on line 47
+[01-Jan-2026 16:26:12 Europe/Moscow] PHP Fatal error:  Uncaught TypeError: Nigr\Chat\Repositories\MessageRepository::post(): Argument #1 ($params) must be of type array, stdClass given, called in C:\OSPanel\domains\nigr-chat\src\ChatApi.php on line 62 and defined in C:\OSPanel\domains\nigr-chat\src\Repositories\MessageRepository.php:38
+Stack trace:
+#0 C:\OSPanel\domains\nigr-chat\src\ChatApi.php(62): Nigr\Chat\Repositories\MessageRepository->post()
+#1 C:\OSPanel\domains\nigr-chat\index.php(47): Nigr\Chat\ChatApi->createMessage()
+#2 {main}
+  thrown in C:\OSPanel\domains\nigr-chat\src\Repositories\MessageRepository.php on line 38
+[01-Jan-2026 16:26:37 Europe/Moscow] PHP Warning:  Undefined array key 0 in C:\OSPanel\domains\nigr-chat\src\Repositories\MessageRepository.php on line 49
+[01-Jan-2026 16:26:37 Europe/Moscow] PHP Warning:  Trying to access array offset on value of type null in C:\OSPanel\domains\nigr-chat\src\Repositories\MessageRepository.php on line 49
+[01-Jan-2026 16:26:37 Europe/Moscow] PHP Warning:  Undefined array key 0 in C:\OSPanel\domains\nigr-chat\src\Repositories\MessageRepository.php on line 50
+[01-Jan-2026 16:26:37 Europe/Moscow] PHP Warning:  Trying to access array offset on value of type null in C:\OSPanel\domains\nigr-chat\src\Repositories\MessageRepository.php on line 50
+[01-Jan-2026 16:26:37 Europe/Moscow] PHP Warning:  Undefined array key 0 in C:\OSPanel\domains\nigr-chat\src\Repositories\MessageRepository.php on line 51
+[01-Jan-2026 16:26:37 Europe/Moscow] PHP Warning:  Trying to access array offset on value of type null in C:\OSPanel\domains\nigr-chat\src\Repositories\MessageRepository.php on line 51
+[01-Jan-2026 16:26:37 Europe/Moscow] PHP Warning:  Undefined array key 0 in C:\OSPanel\domains\nigr-chat\src\Repositories\MessageRepository.php on line 52
+[01-Jan-2026 16:26:37 Europe/Moscow] PHP Warning:  Trying to access array offset on value of type null in C:\OSPanel\domains\nigr-chat\src\Repositories\MessageRepository.php on line 52
+[01-Jan-2026 16:26:37 Europe/Moscow] PHP Warning:  Undefined array key 0 in C:\OSPanel\domains\nigr-chat\src\Repositories\MessageRepository.php on line 53
+[01-Jan-2026 16:26:37 Europe/Moscow] PHP Warning:  Trying to access array offset on value of type null in C:\OSPanel\domains\nigr-chat\src\Repositories\MessageRepository.php on line 53
+[01-Jan-2026 16:27:17 Europe/Moscow] PHP Warning:  Undefined array key 0 in C:\OSPanel\domains\nigr-chat\src\Repositories\MessageRepository.php on line 49
+[01-Jan-2026 16:27:17 Europe/Moscow] PHP Warning:  Trying to access array offset on value of type null in C:\OSPanel\domains\nigr-chat\src\Repositories\MessageRepository.php on line 49
+[01-Jan-2026 16:27:17 Europe/Moscow] PHP Warning:  Undefined array key 0 in C:\OSPanel\domains\nigr-chat\src\Repositories\MessageRepository.php on line 50
+[01-Jan-2026 16:27:17 Europe/Moscow] PHP Warning:  Trying to access array offset on value of type null in C:\OSPanel\domains\nigr-chat\src\Repositories\MessageRepository.php on line 50
+[01-Jan-2026 16:27:17 Europe/Moscow] PHP Warning:  Undefined array key 0 in C:\OSPanel\domains\nigr-chat\src\Repositories\MessageRepository.php on line 51
+[01-Jan-2026 16:27:17 Europe/Moscow] PHP Warning:  Trying to access array offset on value of type null in C:\OSPanel\domains\nigr-chat\src\Repositories\MessageRepository.php on line 51
+[01-Jan-2026 16:27:17 Europe/Moscow] PHP Warning:  Undefined array key 0 in C:\OSPanel\domains\nigr-chat\src\Repositories\MessageRepository.php on line 52
+[01-Jan-2026 16:27:17 Europe/Moscow] PHP Warning:  Trying to access array offset on value of type null in C:\OSPanel\domains\nigr-chat\src\Repositories\MessageRepository.php on line 52
+[01-Jan-2026 16:27:17 Europe/Moscow] PHP Warning:  Undefined array key 0 in C:\OSPanel\domains\nigr-chat\src\Repositories\MessageRepository.php on line 53
+[01-Jan-2026 16:27:17 Europe/Moscow] PHP Warning:  Trying to access array offset on value of type null in C:\OSPanel\domains\nigr-chat\src\Repositories\MessageRepository.php on line 53
+[01-Jan-2026 16:28:06 Europe/Moscow] PHP Warning:  Undefined array key 0 in C:\OSPanel\domains\nigr-chat\src\Repositories\MessageRepository.php on line 51
+[01-Jan-2026 16:28:06 Europe/Moscow] PHP Warning:  Trying to access array offset on value of type null in C:\OSPanel\domains\nigr-chat\src\Repositories\MessageRepository.php on line 51
+[01-Jan-2026 16:28:06 Europe/Moscow] PHP Warning:  Undefined array key 0 in C:\OSPanel\domains\nigr-chat\src\Repositories\MessageRepository.php on line 52
+[01-Jan-2026 16:28:06 Europe/Moscow] PHP Warning:  Trying to access array offset on value of type null in C:\OSPanel\domains\nigr-chat\src\Repositories\MessageRepository.php on line 52
+[01-Jan-2026 16:28:06 Europe/Moscow] PHP Warning:  Undefined array key 0 in C:\OSPanel\domains\nigr-chat\src\Repositories\MessageRepository.php on line 53
+[01-Jan-2026 16:28:06 Europe/Moscow] PHP Warning:  Trying to access array offset on value of type null in C:\OSPanel\domains\nigr-chat\src\Repositories\MessageRepository.php on line 53
+[01-Jan-2026 16:28:06 Europe/Moscow] PHP Warning:  Undefined array key 0 in C:\OSPanel\domains\nigr-chat\src\Repositories\MessageRepository.php on line 54
+[01-Jan-2026 16:28:06 Europe/Moscow] PHP Warning:  Trying to access array offset on value of type null in C:\OSPanel\domains\nigr-chat\src\Repositories\MessageRepository.php on line 54
+[01-Jan-2026 16:28:06 Europe/Moscow] PHP Warning:  Undefined array key 0 in C:\OSPanel\domains\nigr-chat\src\Repositories\MessageRepository.php on line 55
+[01-Jan-2026 16:28:06 Europe/Moscow] PHP Warning:  Trying to access array offset on value of type null in C:\OSPanel\domains\nigr-chat\src\Repositories\MessageRepository.php on line 55
+[01-Jan-2026 16:28:33 Europe/Moscow] PHP Warning:  Undefined array key 0 in C:\OSPanel\domains\nigr-chat\src\Repositories\MessageRepository.php on line 51
+[01-Jan-2026 16:28:33 Europe/Moscow] PHP Warning:  Trying to access array offset on value of type null in C:\OSPanel\domains\nigr-chat\src\Repositories\MessageRepository.php on line 51
+[01-Jan-2026 16:28:33 Europe/Moscow] PHP Warning:  Undefined array key 0 in C:\OSPanel\domains\nigr-chat\src\Repositories\MessageRepository.php on line 52
+[01-Jan-2026 16:28:33 Europe/Moscow] PHP Warning:  Trying to access array offset on value of type null in C:\OSPanel\domains\nigr-chat\src\Repositories\MessageRepository.php on line 52
+[01-Jan-2026 16:28:33 Europe/Moscow] PHP Warning:  Undefined array key 0 in C:\OSPanel\domains\nigr-chat\src\Repositories\MessageRepository.php on line 53
+[01-Jan-2026 16:28:33 Europe/Moscow] PHP Warning:  Trying to access array offset on value of type null in C:\OSPanel\domains\nigr-chat\src\Repositories\MessageRepository.php on line 53
+[01-Jan-2026 16:28:33 Europe/Moscow] PHP Warning:  Undefined array key 0 in C:\OSPanel\domains\nigr-chat\src\Repositories\MessageRepository.php on line 54
+[01-Jan-2026 16:28:33 Europe/Moscow] PHP Warning:  Trying to access array offset on value of type null in C:\OSPanel\domains\nigr-chat\src\Repositories\MessageRepository.php on line 54
+[01-Jan-2026 16:28:33 Europe/Moscow] PHP Warning:  Undefined array key 0 in C:\OSPanel\domains\nigr-chat\src\Repositories\MessageRepository.php on line 55
+[01-Jan-2026 16:28:33 Europe/Moscow] PHP Warning:  Trying to access array offset on value of type null in C:\OSPanel\domains\nigr-chat\src\Repositories\MessageRepository.php on line 55
+[01-Jan-2026 16:28:35 Europe/Moscow] PHP Warning:  Undefined array key 0 in C:\OSPanel\domains\nigr-chat\src\Repositories\MessageRepository.php on line 51
+[01-Jan-2026 16:28:35 Europe/Moscow] PHP Warning:  Trying to access array offset on value of type null in C:\OSPanel\domains\nigr-chat\src\Repositories\MessageRepository.php on line 51
+[01-Jan-2026 16:28:35 Europe/Moscow] PHP Warning:  Undefined array key 0 in C:\OSPanel\domains\nigr-chat\src\Repositories\MessageRepository.php on line 52
+[01-Jan-2026 16:28:35 Europe/Moscow] PHP Warning:  Trying to access array offset on value of type null in C:\OSPanel\domains\nigr-chat\src\Repositories\MessageRepository.php on line 52
+[01-Jan-2026 16:28:35 Europe/Moscow] PHP Warning:  Undefined array key 0 in C:\OSPanel\domains\nigr-chat\src\Repositories\MessageRepository.php on line 53
+[01-Jan-2026 16:28:35 Europe/Moscow] PHP Warning:  Trying to access array offset on value of type null in C:\OSPanel\domains\nigr-chat\src\Repositories\MessageRepository.php on line 53
+[01-Jan-2026 16:28:35 Europe/Moscow] PHP Warning:  Undefined array key 0 in C:\OSPanel\domains\nigr-chat\src\Repositories\MessageRepository.php on line 54
+[01-Jan-2026 16:28:35 Europe/Moscow] PHP Warning:  Trying to access array offset on value of type null in C:\OSPanel\domains\nigr-chat\src\Repositories\MessageRepository.php on line 54
+[01-Jan-2026 16:28:35 Europe/Moscow] PHP Warning:  Undefined array key 0 in C:\OSPanel\domains\nigr-chat\src\Repositories\MessageRepository.php on line 55
+[01-Jan-2026 16:28:35 Europe/Moscow] PHP Warning:  Trying to access array offset on value of type null in C:\OSPanel\domains\nigr-chat\src\Repositories\MessageRepository.php on line 55
+[01-Jan-2026 16:31:45 Europe/Moscow] PHP Warning:  Undefined array key 0 in C:\OSPanel\domains\nigr-chat\src\Repositories\MessageRepository.php on line 51
+[01-Jan-2026 16:31:45 Europe/Moscow] PHP Warning:  Trying to access array offset on value of type null in C:\OSPanel\domains\nigr-chat\src\Repositories\MessageRepository.php on line 51
+[01-Jan-2026 16:31:45 Europe/Moscow] PHP Warning:  Undefined array key 0 in C:\OSPanel\domains\nigr-chat\src\Repositories\MessageRepository.php on line 52
+[01-Jan-2026 16:31:45 Europe/Moscow] PHP Warning:  Trying to access array offset on value of type null in C:\OSPanel\domains\nigr-chat\src\Repositories\MessageRepository.php on line 52
+[01-Jan-2026 16:31:45 Europe/Moscow] PHP Warning:  Undefined array key 0 in C:\OSPanel\domains\nigr-chat\src\Repositories\MessageRepository.php on line 53
+[01-Jan-2026 16:31:45 Europe/Moscow] PHP Warning:  Trying to access array offset on value of type null in C:\OSPanel\domains\nigr-chat\src\Repositories\MessageRepository.php on line 53
+[01-Jan-2026 16:31:45 Europe/Moscow] PHP Warning:  Undefined array key 0 in C:\OSPanel\domains\nigr-chat\src\Repositories\MessageRepository.php on line 54
+[01-Jan-2026 16:31:45 Europe/Moscow] PHP Warning:  Trying to access array offset on value of type null in C:\OSPanel\domains\nigr-chat\src\Repositories\MessageRepository.php on line 54
+[01-Jan-2026 16:31:45 Europe/Moscow] PHP Warning:  Undefined array key 0 in C:\OSPanel\domains\nigr-chat\src\Repositories\MessageRepository.php on line 55
+[01-Jan-2026 16:31:45 Europe/Moscow] PHP Warning:  Trying to access array offset on value of type null in C:\OSPanel\domains\nigr-chat\src\Repositories\MessageRepository.php on line 55
+[01-Jan-2026 16:32:41 Europe/Moscow] PHP Warning:  Undefined array key 0 in C:\OSPanel\domains\nigr-chat\src\Repositories\MessageRepository.php on line 54
+[01-Jan-2026 16:32:41 Europe/Moscow] PHP Warning:  Trying to access array offset on value of type null in C:\OSPanel\domains\nigr-chat\src\Repositories\MessageRepository.php on line 54
+[01-Jan-2026 16:32:41 Europe/Moscow] PHP Warning:  Undefined array key 0 in C:\OSPanel\domains\nigr-chat\src\Repositories\MessageRepository.php on line 55
+[01-Jan-2026 16:32:41 Europe/Moscow] PHP Warning:  Trying to access array offset on value of type null in C:\OSPanel\domains\nigr-chat\src\Repositories\MessageRepository.php on line 55
+[01-Jan-2026 16:32:41 Europe/Moscow] PHP Warning:  Undefined array key 0 in C:\OSPanel\domains\nigr-chat\src\Repositories\MessageRepository.php on line 56
+[01-Jan-2026 16:32:41 Europe/Moscow] PHP Warning:  Trying to access array offset on value of type null in C:\OSPanel\domains\nigr-chat\src\Repositories\MessageRepository.php on line 56
+[01-Jan-2026 16:32:41 Europe/Moscow] PHP Warning:  Undefined array key 0 in C:\OSPanel\domains\nigr-chat\src\Repositories\MessageRepository.php on line 57
+[01-Jan-2026 16:32:41 Europe/Moscow] PHP Warning:  Trying to access array offset on value of type null in C:\OSPanel\domains\nigr-chat\src\Repositories\MessageRepository.php on line 57
+[01-Jan-2026 16:32:41 Europe/Moscow] PHP Warning:  Undefined array key 0 in C:\OSPanel\domains\nigr-chat\src\Repositories\MessageRepository.php on line 58
+[01-Jan-2026 16:32:41 Europe/Moscow] PHP Warning:  Trying to access array offset on value of type null in C:\OSPanel\domains\nigr-chat\src\Repositories\MessageRepository.php on line 58
+[01-Jan-2026 16:36:12 Europe/Moscow] PHP Warning:  Undefined array key 0 in C:\OSPanel\domains\nigr-chat\src\Repositories\MessageRepository.php on line 54
+[01-Jan-2026 16:36:12 Europe/Moscow] PHP Warning:  Trying to access array offset on value of type null in C:\OSPanel\domains\nigr-chat\src\Repositories\MessageRepository.php on line 54
+[01-Jan-2026 16:36:12 Europe/Moscow] PHP Warning:  Undefined array key 0 in C:\OSPanel\domains\nigr-chat\src\Repositories\MessageRepository.php on line 55
+[01-Jan-2026 16:36:12 Europe/Moscow] PHP Warning:  Trying to access array offset on value of type null in C:\OSPanel\domains\nigr-chat\src\Repositories\MessageRepository.php on line 55
+[01-Jan-2026 16:36:12 Europe/Moscow] PHP Warning:  Undefined array key 0 in C:\OSPanel\domains\nigr-chat\src\Repositories\MessageRepository.php on line 56
+[01-Jan-2026 16:36:12 Europe/Moscow] PHP Warning:  Trying to access array offset on value of type null in C:\OSPanel\domains\nigr-chat\src\Repositories\MessageRepository.php on line 56
+[01-Jan-2026 16:36:12 Europe/Moscow] PHP Warning:  Undefined array key 0 in C:\OSPanel\domains\nigr-chat\src\Repositories\MessageRepository.php on line 57
+[01-Jan-2026 16:36:12 Europe/Moscow] PHP Warning:  Trying to access array offset on value of type null in C:\OSPanel\domains\nigr-chat\src\Repositories\MessageRepository.php on line 57
+[01-Jan-2026 16:36:12 Europe/Moscow] PHP Warning:  Undefined array key 0 in C:\OSPanel\domains\nigr-chat\src\Repositories\MessageRepository.php on line 58
+[01-Jan-2026 16:36:12 Europe/Moscow] PHP Warning:  Trying to access array offset on value of type null in C:\OSPanel\domains\nigr-chat\src\Repositories\MessageRepository.php on line 58
+[01-Jan-2026 16:37:50 Europe/Moscow] PHP Warning:  Undefined array key 0 in C:\OSPanel\domains\nigr-chat\src\Repositories\MessageRepository.php on line 54
+[01-Jan-2026 16:37:50 Europe/Moscow] PHP Warning:  Trying to access array offset on value of type null in C:\OSPanel\domains\nigr-chat\src\Repositories\MessageRepository.php on line 54
+[01-Jan-2026 16:37:50 Europe/Moscow] PHP Warning:  Undefined array key 0 in C:\OSPanel\domains\nigr-chat\src\Repositories\MessageRepository.php on line 55
+[01-Jan-2026 16:37:50 Europe/Moscow] PHP Warning:  Trying to access array offset on value of type null in C:\OSPanel\domains\nigr-chat\src\Repositories\MessageRepository.php on line 55
+[01-Jan-2026 16:37:50 Europe/Moscow] PHP Warning:  Undefined array key 0 in C:\OSPanel\domains\nigr-chat\src\Repositories\MessageRepository.php on line 56
+[01-Jan-2026 16:37:50 Europe/Moscow] PHP Warning:  Trying to access array offset on value of type null in C:\OSPanel\domains\nigr-chat\src\Repositories\MessageRepository.php on line 56
+[01-Jan-2026 16:37:50 Europe/Moscow] PHP Warning:  Undefined array key 0 in C:\OSPanel\domains\nigr-chat\src\Repositories\MessageRepository.php on line 57
+[01-Jan-2026 16:37:50 Europe/Moscow] PHP Warning:  Trying to access array offset on value of type null in C:\OSPanel\domains\nigr-chat\src\Repositories\MessageRepository.php on line 57
+[01-Jan-2026 16:37:50 Europe/Moscow] PHP Warning:  Undefined array key 0 in C:\OSPanel\domains\nigr-chat\src\Repositories\MessageRepository.php on line 58
+[01-Jan-2026 16:37:50 Europe/Moscow] PHP Warning:  Trying to access array offset on value of type null in C:\OSPanel\domains\nigr-chat\src\Repositories\MessageRepository.php on line 58
+[01-Jan-2026 16:38:17 Europe/Moscow] PHP Warning:  Undefined array key 0 in C:\OSPanel\domains\nigr-chat\src\Repositories\MessageRepository.php on line 55
+[01-Jan-2026 16:38:17 Europe/Moscow] PHP Warning:  Trying to access array offset on value of type null in C:\OSPanel\domains\nigr-chat\src\Repositories\MessageRepository.php on line 55
+[01-Jan-2026 16:38:17 Europe/Moscow] PHP Warning:  Undefined array key 0 in C:\OSPanel\domains\nigr-chat\src\Repositories\MessageRepository.php on line 56
+[01-Jan-2026 16:38:17 Europe/Moscow] PHP Warning:  Trying to access array offset on value of type null in C:\OSPanel\domains\nigr-chat\src\Repositories\MessageRepository.php on line 56
+[01-Jan-2026 16:38:17 Europe/Moscow] PHP Warning:  Undefined array key 0 in C:\OSPanel\domains\nigr-chat\src\Repositories\MessageRepository.php on line 57
+[01-Jan-2026 16:38:17 Europe/Moscow] PHP Warning:  Trying to access array offset on value of type null in C:\OSPanel\domains\nigr-chat\src\Repositories\MessageRepository.php on line 57
+[01-Jan-2026 16:38:17 Europe/Moscow] PHP Warning:  Undefined array key 0 in C:\OSPanel\domains\nigr-chat\src\Repositories\MessageRepository.php on line 58
+[01-Jan-2026 16:38:17 Europe/Moscow] PHP Warning:  Trying to access array offset on value of type null in C:\OSPanel\domains\nigr-chat\src\Repositories\MessageRepository.php on line 58
+[01-Jan-2026 16:38:17 Europe/Moscow] PHP Warning:  Undefined array key 0 in C:\OSPanel\domains\nigr-chat\src\Repositories\MessageRepository.php on line 59
+[01-Jan-2026 16:38:17 Europe/Moscow] PHP Warning:  Trying to access array offset on value of type null in C:\OSPanel\domains\nigr-chat\src\Repositories\MessageRepository.php on line 59
+[01-Jan-2026 19:40:04 Europe/Moscow] PHP Warning:  Undefined array key "DB_PASSWORD" in C:\OSPanel\domains\nigr-chat\index.php on line 40
+[01-Jan-2026 19:40:04 Europe/Moscow] PHP Fatal error:  Uncaught TypeError: Cannot assign null to property Nigr\Chat\Database\Connection::$password of type string in C:\OSPanel\domains\nigr-chat\src\Database\Connection.php:17
+Stack trace:
+#0 C:\OSPanel\domains\nigr-chat\src\ChatApi.php(20): Nigr\Chat\Database\Connection->__construct()
+#1 C:\OSPanel\domains\nigr-chat\index.php(45): Nigr\Chat\ChatApi->__construct()
+#2 {main}
+  thrown in C:\OSPanel\domains\nigr-chat\src\Database\Connection.php on line 17
+[01-Jan-2026 19:40:12 Europe/Moscow] PHP Warning:  Undefined array key "DB_PASSWORD" in C:\OSPanel\domains\nigr-chat\index.php on line 40
+[01-Jan-2026 19:40:12 Europe/Moscow] PHP Fatal error:  Uncaught TypeError: Cannot assign null to property Nigr\Chat\Database\Connection::$password of type string in C:\OSPanel\domains\nigr-chat\src\Database\Connection.php:17
+Stack trace:
+#0 C:\OSPanel\domains\nigr-chat\src\ChatApi.php(20): Nigr\Chat\Database\Connection->__construct()
+#1 C:\OSPanel\domains\nigr-chat\index.php(45): Nigr\Chat\ChatApi->__construct()
+#2 {main}
+  thrown in C:\OSPanel\domains\nigr-chat\src\Database\Connection.php on line 17
+[01-Jan-2026 21:25:35 Europe/Moscow] PHP Fatal error:  Uncaught ArgumentCountError: Too few arguments to function Nigr\Chat\Models\Chat::__construct(), 4 passed in C:\OSPanel\domains\nigr-chat\src\Repositories\ChatRepository.php on line 52 and exactly 6 expected in C:\OSPanel\domains\nigr-chat\src\Models\Chat.php:7
+Stack trace:
+#0 C:\OSPanel\domains\nigr-chat\src\Repositories\ChatRepository.php(52): Nigr\Chat\Models\Chat->__construct()
+#1 C:\OSPanel\domains\nigr-chat\src\ChatApi.php(41): Nigr\Chat\Repositories\ChatRepository->post()
+#2 C:\OSPanel\domains\nigr-chat\index.php(47): Nigr\Chat\ChatApi->createChat()
+#3 {main}
+  thrown in C:\OSPanel\domains\nigr-chat\src\Models\Chat.php on line 7
+[01-Jan-2026 21:25:49 Europe/Moscow] PHP Fatal error:  Uncaught ArgumentCountError: Too few arguments to function Nigr\Chat\Models\Message::__construct(), 5 passed in C:\OSPanel\domains\nigr-chat\src\Repositories\MessageRepository.php on line 53 and exactly 7 expected in C:\OSPanel\domains\nigr-chat\src\Models\Message.php:7
+Stack trace:
+#0 C:\OSPanel\domains\nigr-chat\src\Repositories\MessageRepository.php(53): Nigr\Chat\Models\Message->__construct()
+#1 C:\OSPanel\domains\nigr-chat\src\ChatApi.php(60): Nigr\Chat\Repositories\MessageRepository->post()
+#2 C:\OSPanel\domains\nigr-chat\index.php(47): Nigr\Chat\ChatApi->createMessage()
+#3 {main}
+  thrown in C:\OSPanel\domains\nigr-chat\src\Models\Message.php on line 7
+[02-Jan-2026 11:58:53 Europe/Moscow] PHP Fatal error:  Uncaught TypeError: Nigr\Chat\ChatApi::createChat(): Return value must be of type Nigr\Chat\Models\Chat, array returned in C:\OSPanel\domains\nigr-chat\src\ChatApi.php:41
+Stack trace:
+#0 C:\OSPanel\domains\nigr-chat\index.php(47): Nigr\Chat\ChatApi->createChat()
+#1 {main}
+  thrown in C:\OSPanel\domains\nigr-chat\src\ChatApi.php on line 41
+[03-Jan-2026 16:50:08 Europe/Moscow] PHP Fatal error:  Uncaught Error: Typed property Nigr\Chat\Database\Connection::$pdoFactory must not be accessed before initialization in C:\OSPanel\domains\nigr-chat\src\Database\Connection.php:36
+Stack trace:
+#0 C:\OSPanel\domains\nigr-chat\src\ChatApi.php(20): Nigr\Chat\Database\Connection->getConnection()
+#1 C:\OSPanel\domains\nigr-chat\index.php(45): Nigr\Chat\ChatApi->__construct()
+#2 {main}
+  thrown in C:\OSPanel\domains\nigr-chat\src\Database\Connection.php on line 36
+[03-Jan-2026 16:51:38 Europe/Moscow] PHP Fatal error:  Uncaught TypeError: Nigr\Chat\Database\Connection::__construct(): Argument #1 ($pdoFactory) must be of type Nigr\Chat\Database\PDOFactoryInterface, string given, called in C:\OSPanel\domains\nigr-chat\src\ChatApi.php on line 19 and defined in C:\OSPanel\domains\nigr-chat\src\Database\Connection.php:21
+Stack trace:
+#0 C:\OSPanel\domains\nigr-chat\src\ChatApi.php(19): Nigr\Chat\Database\Connection->__construct()
+#1 C:\OSPanel\domains\nigr-chat\index.php(45): Nigr\Chat\ChatApi->__construct()
+#2 {main}
+  thrown in C:\OSPanel\domains\nigr-chat\src\Database\Connection.php on line 21
