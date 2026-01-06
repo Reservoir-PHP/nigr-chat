@@ -5,3 +5,4 @@ index.php
 composer.lock
 .htaccess
 .env
+tests/info
