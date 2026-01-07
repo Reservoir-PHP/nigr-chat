@@ -3,6 +3,6 @@ vendor
 data
 index.php
 composer.lock
-.htaccess
+/.htaccess
 .env
 tests/info
