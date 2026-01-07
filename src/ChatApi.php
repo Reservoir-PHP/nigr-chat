@@ -2,6 +2,7 @@
 
 namespace Nigr\Chat;
 
+use Exception;
 use Nigr\Chat\Database\Connection;
 use Nigr\Chat\Models\Chat;
 use Nigr\Chat\Models\Message;
@@ -10,15 +11,29 @@ use Nigr\Chat\Repositories\MessageRepository;
 
 class ChatApi
 {
-	private Connection $db;
+	private static ?Connection $db = null;
 	private ChatRepository $chatRepository;
 	private MessageRepository $messageRepository;
 
-	public function __construct($dsn, $username, $password)
+	public function __construct()
 	{
-		$this->db = new Connection($dsn, $username, $password);
-		$this->chatRepository = new ChatRepository($this->db->getConnection());
-		$this->messageRepository = new MessageRepository($this->db->getConnection());
+		if (self::$db === null) {
+			throw new Exception("ChatApi::setConnection() must be called first");
+		}
+
+		$this->chatRepository = new ChatRepository(self::$db?->getConnection());
+		$this->messageRepository = new MessageRepository(self::$db?->getConnection());
+	}
+
+	/**
+	 * @param $dsn
+	 * @param $username
+	 * @param $password
+	 * @return void
+	 */
+	public static function setConnection($dsn, $username, $password): void
+	{
+		self::$db = new Connection($dsn, $username, $password);
 	}
 
 	/**

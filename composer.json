@@ -1,7 +1,7 @@
 {
   "version": "1.0.0",
   "name": "nigr/chat",
-  "description": "simple chat",
+  "description": "PHP chat library",
   "type": "library",
   "license": "MIT",
   "authors": [

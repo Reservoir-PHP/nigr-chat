@@ -274,3 +274,8 @@ Stack trace:
 #1 C:\OSPanel\domains\nigr-chat\index.php(45): Nigr\Chat\ChatApi->__construct()
 #2 {main}
   thrown in C:\OSPanel\domains\nigr-chat\src\Database\Connection.php on line 21
+[07-Jan-2026 20:11:36 Europe/Moscow] PHP Fatal error:  Uncaught ArgumentCountError: Too few arguments to function Nigr\Chat\ChatApi::__construct(), 0 passed in C:\OSPanel\domains\nigr-chat\index.php on line 53 and exactly 3 expected in C:\OSPanel\domains\nigr-chat\src\ChatApi.php:17
+Stack trace:
+#0 C:\OSPanel\domains\nigr-chat\index.php(53): Nigr\Chat\ChatApi->__construct()
+#1 {main}
+  thrown in C:\OSPanel\domains\nigr-chat\src\ChatApi.php on line 17
