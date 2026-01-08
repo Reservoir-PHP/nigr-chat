@@ -52,7 +52,7 @@ class ChatApiTest extends TestCase
 		new ChatApi();
 	}
 
-	public function testReadChats($params = ["id" => 1])
+	public function testGetChats($params = ["id" => 1])
 	{
 		self::resetDb();
 
@@ -64,7 +64,7 @@ class ChatApiTest extends TestCase
 
 		$chatApi = new ChatApi();
 
-		$result = $chatApi->readChats($params);
+		$result = $chatApi->getChats($params);
 
 		self::assertInstanceOf(Chat::class, $result[0]);
 		self::assertEquals($params["id"], $result[0]->id);
@@ -92,7 +92,7 @@ class ChatApiTest extends TestCase
 		self::assertEquals($params["executor_id"], $result[0]->executorId);
 	}
 
-	public function testReadMessages($params = ["id" => 1])
+	public function testGetMessages($params = ["id" => 1])
 	{
 		self::resetDb();
 
@@ -104,7 +104,7 @@ class ChatApiTest extends TestCase
 
 		$chatApi = new ChatApi();
 
-		$result = $chatApi->readMessages($params);
+		$result = $chatApi->getMessages($params);
 
 		self::assertInstanceOf(Message::class, $result[0]);
 		self::assertEquals($params["id"], $result[0]->id);

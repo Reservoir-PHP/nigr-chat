@@ -35,8 +35,8 @@ class ChatRepositoryTest extends TestCase
 		$repository = new ChatRepository($pdoMock);
 
 		$map = [
-			[["id" => 1], "select", "111"],
-			[["id" => 2], "select", "222"],
+			[["id" => 1], "select", "WHERE id=:id"],
+			[["lot_id" => 2], "select", "WHERE lot_id=:lot_id"],
 		];
 
 		$helpersMock = $this->getMockBuilder(DataBase::class)->disableOriginalConstructor()->getMock();
