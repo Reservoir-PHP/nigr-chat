@@ -279,3 +279,30 @@ Stack trace:
 #0 C:\OSPanel\domains\nigr-chat\index.php(53): Nigr\Chat\ChatApi->__construct()
 #1 {main}
   thrown in C:\OSPanel\domains\nigr-chat\src\ChatApi.php on line 17
+[08-Jan-2026 19:25:38 Europe/Moscow] PHP Warning:  Undefined array key "data" in C:\OSPanel\domains\nigr-chat\src\ChatApi.php on line 62
+[08-Jan-2026 19:25:38 Europe/Moscow] PHP Warning:  Trying to access array offset on value of type null in C:\OSPanel\domains\nigr-chat\src\ChatApi.php on line 62
+[08-Jan-2026 19:25:44 Europe/Moscow] PHP Warning:  Undefined array key "data" in C:\OSPanel\domains\nigr-chat\src\ChatApi.php on line 62
+[08-Jan-2026 19:25:44 Europe/Moscow] PHP Warning:  Trying to access array offset on value of type null in C:\OSPanel\domains\nigr-chat\src\ChatApi.php on line 62
+[08-Jan-2026 19:26:19 Europe/Moscow] PHP Fatal error:  Uncaught ArgumentCountError: var_dump() expects at least 1 argument, 0 given in C:\OSPanel\domains\nigr-chat\src\ChatApi.php:62
+Stack trace:
+#0 C:\OSPanel\domains\nigr-chat\src\ChatApi.php(62): var_dump()
+#1 C:\OSPanel\domains\nigr-chat\index.php(47): Nigr\Chat\ChatApi->createChat()
+#2 {main}
+  thrown in C:\OSPanel\domains\nigr-chat\src\ChatApi.php on line 62
+[08-Jan-2026 19:26:36 Europe/Moscow] PHP Warning:  Undefined array key "data" in C:\OSPanel\domains\nigr-chat\src\ChatApi.php on line 63
+[08-Jan-2026 19:26:36 Europe/Moscow] PHP Warning:  Trying to access array offset on value of type null in C:\OSPanel\domains\nigr-chat\src\ChatApi.php on line 63
+[08-Jan-2026 19:26:59 Europe/Moscow] PHP Fatal error:  Uncaught Error: Cannot use object of type Nigr\Chat\Models\Chat as array in C:\OSPanel\domains\nigr-chat\src\ChatApi.php:62
+Stack trace:
+#0 C:\OSPanel\domains\nigr-chat\index.php(47): Nigr\Chat\ChatApi->createChat()
+#1 {main}
+  thrown in C:\OSPanel\domains\nigr-chat\src\ChatApi.php on line 62
+[08-Jan-2026 19:27:26 Europe/Moscow] PHP Fatal error:  Uncaught Error: Cannot use object of type Nigr\Chat\Models\Chat as array in C:\OSPanel\domains\nigr-chat\src\ChatApi.php:63
+Stack trace:
+#0 C:\OSPanel\domains\nigr-chat\index.php(47): Nigr\Chat\ChatApi->createChat()
+#1 {main}
+  thrown in C:\OSPanel\domains\nigr-chat\src\ChatApi.php on line 63
+[08-Jan-2026 19:27:55 Europe/Moscow] PHP Fatal error:  Uncaught Error: Cannot use object of type Nigr\Chat\Models\Chat as array in C:\OSPanel\domains\nigr-chat\src\ChatApi.php:63
+Stack trace:
+#0 C:\OSPanel\domains\nigr-chat\index.php(47): Nigr\Chat\ChatApi->createChat()
+#1 {main}
+  thrown in C:\OSPanel\domains\nigr-chat\src\ChatApi.php on line 63

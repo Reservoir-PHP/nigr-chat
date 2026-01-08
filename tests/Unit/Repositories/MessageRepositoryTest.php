@@ -43,7 +43,7 @@ class MessageRepositoryTest extends TestCase
 		$this->assertInstanceOf($expected, $result[0]);
 	}
 
-	public function testPost($params = ["id" => 1, "chat_id" => 2, "owner" => 3, "text" => "", "recipient" => 4], $returnedId = 33, $expected = Message::class) {
+	public function testPost($params = ["id" => 1, "chat_id" => 2, "owner" => 3, "text" => "", "recipient" => 4], $expected = Message::class) {
 		$pdoStatementMock = $this->getMockBuilder(PDOStatement::class)->disableOriginalConstructor()->getMock();
 		$pdoStatementMock->method("execute")->willReturn(true);
 		$pdoStatementMock->method("fetchAll")->willReturn(

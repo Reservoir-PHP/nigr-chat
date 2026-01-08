@@ -30,13 +30,13 @@ class MessageRepository
 		$messages = $statement->fetchAll(PDO::FETCH_ASSOC);
 
 		return array_map(fn(array $message) => new Message(
-			(int)$messages[0]['id'],
-			(int)$messages[0]['chat_id'],
-			(int)$messages[0]['owner'],
-			(string)$messages[0]['text'],
-			(int)$messages[0]['recipient'],
-			(string)$messages[0]['created_at'],
-			(string)$messages[0]['updated_at'],
+			(int)$messages[0]["id"],
+			(int)$messages[0]["chat_id"],
+			(int)$messages[0]["owner"],
+			(string)$messages[0]["text"],
+			(int)$messages[0]["recipient"],
+			(string)$messages[0]["created_at"],
+			(string)$messages[0]["updated_at"],
 		), $messages);
 	}
 
@@ -46,7 +46,7 @@ class MessageRepository
 	 */
 	public function post(array $params): array
 	{
-		$rawRequest = $this->helpers->getQueryStringFromQueryParams($params, 'insert');
+		$rawRequest = $this->helpers->getQueryStringFromQueryParams($params, "insert");
 
 		$statement = $this->pdo->prepare("INSERT INTO messages $rawRequest");
 		$statement->execute($params);

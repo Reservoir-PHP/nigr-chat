@@ -2,12 +2,16 @@
 
 namespace Nigr\Tests\Integration\Database;
 
+use Exception;
 use Nigr\Chat\Database\Connection;
 use PDO;
 use PHPUnit\Framework\TestCase;
 
 class ConnectionTest extends TestCase
 {
+	/**
+	 * @throws Exception
+	 */
 	public function testGetConnection()
 	{
 		$dsn = "mysql:host=" . $_ENV["DB_HOST"] . ";dbname=" . $_ENV["DB_NAME"] . ";port=" . $_ENV["DB_PORT"] . ";charset=" . $_ENV["DB_CHARSET"];

@@ -47,7 +47,7 @@ class ChatRepositoryTest extends TestCase
 		$this->assertInstanceOf($expected, $repository->get($params)[0]);
 	}
 
-	public function testPost($params = ["id" => 1, "lot_id" => 2, "contractor_id" => 3, "executor_id" => 4], $returnedId = 33, $expected = Chat::class)
+	public function testPost($params = ["id" => 1, "lot_id" => 2, "contractor_id" => 3, "executor_id" => 4], $expected = Chat::class)
 	{
 		$pdoStatementMock = $this->getMockBuilder(PDOStatement::class)->disableOriginalConstructor()->getMock();
 		$pdoStatementMock->method("execute")->willReturn(true);
