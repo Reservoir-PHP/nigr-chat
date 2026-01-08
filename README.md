@@ -6,23 +6,18 @@
     composer require nigr/dotenv:@dev
 ```
 
-### Add to the .env file, DSN-variables for connect to DB:
+### Get started:
 
-```.env
-    'DB_HOST' => '',
-    'DB_NAME' => '',
-    'DB_PORT' => '',
-    'DB_CHARSET' => '',
-    'DB_USERNAME' => '',
-    'DB_PASSWORD' => ''
-```
+1. Add routes;
+2. Create DB connection: ChatApi::setConnection($dsn, $username, $password);
+3. Call necessary method
 
-### Add routes:
+### Using routes:
 
-- 'GET'-"chatGet"(get chat, if chat not exists, then create chat),
-- 'POST'-"chatPost"(get chat, if chat not exists, then create chat),
-- 'GET'-"messageGet"(get all messages or get defined messages by params),
-- 'POST'-"messageCreate"(create message)
+- 'GET' - "getChats"(get all chats or get defined chats by params),
+- 'POST'- "createChat"(create chat),
+- 'GET' - "getMessages"(get all messages or get defined messages by params),
+- 'POST'- "createMessage"(create message)
 
 ### Prepare DB:
 
@@ -31,7 +26,7 @@ Chats:
 - id: number
 - lot_id: number
 - contractor_id: number
-- executor_id?: number
+- executor_id: number
 - created_at?: timestamp
 - updated_at?: timestamp
 
@@ -45,46 +40,14 @@ Messages:
 - created_at?: timestamp
 - updated_at?: timestamp
 
-## GET DATA
+## Data structure
 
 - chat get = id?, lot_id?, contractor_id?, executor_id?
-- chat post = lot_id, contractor_id, executor_id
+- chat post = lot_id, contractor_id, executor_id,
 - message get = id?, chat_id?, owner?, text?, recipient?
 - message post = chat_id, owner, text, recipient?
 
-"WHERE chat_id=:chat_id"
-
-## RETURN DATA
+## Returned data(JSON)
 
 - ["status" => true, "message" => "!", "data" => [];
 - ["status" => false, "message" => "!", "data" => [];
-
---------------------------------------------
-
-### Literature
-
-- Specification by Example
-- Event storming
-- Impact mapping
-
-- ---
-
-- Domain-Driven Design
-- A SQRS
--
-
-### Info
-
-- фичакат(+) !== фичакрипт(-)
-- impact mapping
-- event storming
-- UI-кит
-- Корректная обработка ошибок
-- by feature(+) !== by layer(-)
-- Feature toggle
-
-### ----
-
-- Абстрактные классы тогда когда из него не будет никогда объекта, только у его потомков
-- Интерфейсы никогда не имеют свойств и реализации методов, они нужны для контроля, что все необходимые методы будут реализованы в классах
-- 

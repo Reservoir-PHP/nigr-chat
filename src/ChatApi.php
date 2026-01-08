@@ -40,7 +40,7 @@ class ChatApi
 	 * @param array $params
 	 * @return Chat[]
 	 */
-	public function readChats(array $params): array
+	public function getChats(array $params): array
 	{
 		return $this->chatRepository->get($params);
 	}
@@ -59,7 +59,7 @@ class ChatApi
 	 * @param array $params
 	 * @return Message[]
 	 */
-	public function readMessages(array $params): array
+	public function getMessages(array $params): array
 	{
 		return $this->messageRepository->get($params);
 	}
