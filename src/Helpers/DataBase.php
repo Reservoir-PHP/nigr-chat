@@ -9,10 +9,10 @@ class DataBase
 	 * @param string $key
 	 * @return string
 	 */
-	public function getQueryStringFromQueryParams(array $queryParams, string $key = 'select'): string
+	public function getQueryStringFromQueryParams(array $queryParams, string $key = "select"): string
 	{
 		if ($queryParams === []) {
-			return '';
+			return"";
 		}
 		if (array_is_list($queryParams)) {
 			return "";
@@ -33,7 +33,7 @@ class DataBase
 	 */
 	private function formingRequestRowSelect($queryParams): string
 	{
-		$queryString = 'WHERE ';
+		$queryString = "WHERE ";
 
 		foreach ($queryParams as $key => $param) {
 			$queryString .= "$key=:$key AND ";

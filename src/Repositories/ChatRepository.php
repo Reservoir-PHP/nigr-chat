@@ -31,12 +31,12 @@ class ChatRepository
 		$chats = $statement->fetchAll(PDO::FETCH_ASSOC);
 
 		return array_map(fn($chat) => new Chat(
-			(int)$chat['id'],
-			(int)$chat['lot_id'],
-			(int)$chat['contractor_id'],
-			(int)$chat['executor_id'],
-			(string)$chat['created_at'],
-			(string)$chat['updated_at'],
+			(int)$chat["id"],
+			(int)$chat["lot_id"],
+			(int)$chat["contractor_id"],
+			(int)$chat["executor_id"],
+			(string)$chat["created_at"],
+			(string)$chat["updated_at"],
 		), $chats);
 	}
 
@@ -46,7 +46,7 @@ class ChatRepository
 	 */
 	public function post(array $params): array
 	{
-		$rawRequest = $this->helpers->getQueryStringFromQueryParams($params, 'insert');
+		$rawRequest = $this->helpers->getQueryStringFromQueryParams($params, "insert");
 
 		$statement = $this->pdo->prepare("INSERT INTO chats $rawRequest");
 		$statement->execute($params);

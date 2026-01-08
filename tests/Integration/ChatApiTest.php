@@ -14,23 +14,33 @@ use ReflectionClass;
 
 class ChatApiTest extends TestCase
 {
-	private static function resetDb(): void
+	protected function setUp(): void
 	{
-		$reflector = new ReflectionClass(ChatApi::class);
-		$property = $reflector->getProperty('db');
-		$property->setValue(null);
-	}
-
-	public function testConstructor()
-	{
-		self::resetDb();
+		parent::setUp();
 
 		$dsn = "mysql:host=" . $_ENV["DB_HOST"] . ";dbname=" . $_ENV["DB_NAME"] . ";port=" . $_ENV["DB_PORT"] . ";charset=" . $_ENV["DB_CHARSET"];
 		$username = $_ENV["DB_USERNAME"];
 		$password = $_ENV["DB_PASSWORD"];
 
 		ChatApi::setConnection($dsn, $username, $password);
+	}
 
+	protected function tearDown(): void
+	{
+		parent::tearDown();
+
+		self::resetDb();
+	}
+
+	private static function resetDb(): void
+	{
+		$reflection = new ReflectionClass(ChatApi::class);
+		$property = $reflection->getProperty('db');
+		$property->setValue(null);
+	}
+
+	public function testConstructor()
+	{
 		$chatApi = new ChatApi();
 		$reflectionChatApi = new ReflectionClass($chatApi);
 
@@ -54,17 +64,9 @@ class ChatApiTest extends TestCase
 
 	public function testGetChats($params = ["id" => 1])
 	{
-		self::resetDb();
-
-		$dsn = "mysql:host=" . $_ENV["DB_HOST"] . ";dbname=" . $_ENV["DB_NAME"] . ";port=" . $_ENV["DB_PORT"] . ";charset=" . $_ENV["DB_CHARSET"];
-		$username = $_ENV["DB_USERNAME"];
-		$password = $_ENV["DB_PASSWORD"];
-
-		ChatApi::setConnection($dsn, $username, $password);
-
 		$chatApi = new ChatApi();
 
-		$result = $chatApi->getChats($params);
+		$result = $chatApi->getChats($params)["data"];
 
 		self::assertInstanceOf(Chat::class, $result[0]);
 		self::assertEquals($params["id"], $result[0]->id);
@@ -72,19 +74,10 @@ class ChatApiTest extends TestCase
 
 	public function testCreateChat($params = ["lot_id" => 2, "contractor_id" => 3, "executor_id" => 4])
 	{
-		self::resetDb();
-
-		$dsn = "mysql:host=" . $_ENV["DB_HOST"] . ";dbname=" . $_ENV["DB_NAME"] . ";port=" . $_ENV["DB_PORT"] . ";charset=" . $_ENV["DB_CHARSET"];
-		$username = $_ENV["DB_USERNAME"];
-		$password = $_ENV["DB_PASSWORD"];
-
-		ChatApi::setConnection($dsn, $username, $password);
-
 		$chatApi = new ChatApi();
-
 		$_POST = $params;
 
-		$result = $chatApi->createChat();
+		$result = $chatApi->createChat()["data"];
 
 		self::assertInstanceOf(Chat::class, $result[0]);
 		self::assertEquals($params["lot_id"], $result[0]->lotId);
@@ -94,37 +87,20 @@ class ChatApiTest extends TestCase
 
 	public function testGetMessages($params = ["id" => 1])
 	{
-		self::resetDb();
-
-		$dsn = "mysql:host=" . $_ENV["DB_HOST"] . ";dbname=" . $_ENV["DB_NAME"] . ";port=" . $_ENV["DB_PORT"] . ";charset=" . $_ENV["DB_CHARSET"];
-		$username = $_ENV["DB_USERNAME"];
-		$password = $_ENV["DB_PASSWORD"];
-
-		ChatApi::setConnection($dsn, $username, $password);
-
 		$chatApi = new ChatApi();
 
-		$result = $chatApi->getMessages($params);
+		$result = $chatApi->getMessages($params)["data"];
 
 		self::assertInstanceOf(Message::class, $result[0]);
 		self::assertEquals($params["id"], $result[0]->id);
 	}
 
-	public function testCreateMessage($params = ["chat_id" => 2, "owner" => 3,"text" => "Text", "recipient" => 4])
+	public function testCreateMessage($params = ["chat_id" => 2, "owner" => 3, "text" => "Text", "recipient" => 4])
 	{
-		self::resetDb();
-
-		$dsn = "mysql:host=" . $_ENV["DB_HOST"] . ";dbname=" . $_ENV["DB_NAME"] . ";port=" . $_ENV["DB_PORT"] . ";charset=" . $_ENV["DB_CHARSET"];
-		$username = $_ENV["DB_USERNAME"];
-		$password = $_ENV["DB_PASSWORD"];
-
-		ChatApi::setConnection($dsn, $username, $password);
-
 		$chatApi = new ChatApi();
-
 		$_POST = $params;
 
-		$result = $chatApi->createMessage();
+		$result = $chatApi->createMessage()["data"];
 
 		self::assertInstanceOf(Message::class, $result[0]);
 		self::assertEquals($params["chat_id"], $result[0]->chatId);
