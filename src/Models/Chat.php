@@ -6,11 +6,11 @@ class Chat
 {
 	public function __construct(
 		public readonly int $id,
-		public readonly int $lotId,
-		public readonly int $contractorId,
-		public readonly int $executorId,
-		public readonly ?string $createdAt,
-		public readonly ?string $updatedAt
+		public readonly int $lot_id,
+		public readonly int $contractor_id,
+		public readonly int $executor_id,
+		public readonly ?string $created_at,
+		public readonly ?string $updated_at
 	) {
 	}
 }

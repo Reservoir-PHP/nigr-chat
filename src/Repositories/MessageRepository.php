@@ -32,9 +32,9 @@ class MessageRepository
 		return array_map(fn(array $message) => new Message(
 			(int)$messages[0]["id"],
 			(int)$messages[0]["chat_id"],
-			(int)$messages[0]["owner"],
+			(int)$messages[0]["owner_id"],
 			(string)$messages[0]["text"],
-			(int)$messages[0]["recipient"],
+			(int)$messages[0]["recipient_id"],
 			(string)$messages[0]["created_at"],
 			(string)$messages[0]["updated_at"],
 		), $messages);
