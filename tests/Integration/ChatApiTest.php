@@ -5,8 +5,6 @@ namespace Nigr\Tests\Integration;
 use Exception;
 use Nigr\Chat\ChatApi;
 use Nigr\Chat\Database\Connection;
-use Nigr\Chat\Models\Chat;
-use Nigr\Chat\Models\Message;
 use Nigr\Chat\Repositories\ChatRepository;
 use Nigr\Chat\Repositories\MessageRepository;
 use PHPUnit\Framework\TestCase;
@@ -62,50 +60,66 @@ class ChatApiTest extends TestCase
 		new ChatApi();
 	}
 
-	public function testGetChats($params = ["id" => 1])
+	/**
+	 * @param array $params
+	 * @return void
+	 * @throws Exception
+	 */
+	public function testGetChats(array $params = ["id" => 1]): void
 	{
 		$chatApi = new ChatApi();
 
-		$result = $chatApi->getChats($params)["data"];
+		$result = json_decode($chatApi->getChats($params), true)["data"];
 
-		self::assertInstanceOf(Chat::class, $result[0]);
-		self::assertEquals($params["id"], $result[0]->id);
+		self::assertEquals($params["id"], $result[0]["id"]);
 	}
 
-	public function testCreateChat($params = ["lot_id" => 2, "contractor_id" => 3, "executor_id" => 4])
+	/**
+	 * @param array $params
+	 * @return void
+	 * @throws Exception
+	 */
+	public function testCreateChat(array $params = ["lot_id" => 2, "contractor_id" => 3, "executor_id" => 4]): void
 	{
 		$chatApi = new ChatApi();
 		$_POST = $params;
 
-		$result = $chatApi->createChat()["data"];
+		$result = json_decode($chatApi->createChat(), true)["data"];
 
-		self::assertInstanceOf(Chat::class, $result[0]);
-		self::assertEquals($params["lot_id"], $result[0]->lotId);
-		self::assertEquals($params["contractor_id"], $result[0]->contractorId);
-		self::assertEquals($params["executor_id"], $result[0]->executorId);
+		self::assertEquals($params["lot_id"], $result[0]["lot_id"]);
+		self::assertEquals($params["contractor_id"], $result[0]["contractor_id"]);
+		self::assertEquals($params["executor_id"], $result[0]["executor_id"]);
 	}
 
-	public function testGetMessages($params = ["id" => 1])
+	/**
+	 * @param array $params
+	 * @return void
+	 * @throws Exception
+	 */
+	public function testGetMessages(array $params = ["id" => 1]): void
 	{
 		$chatApi = new ChatApi();
 
-		$result = $chatApi->getMessages($params)["data"];
+		$result = json_decode($chatApi->getMessages($params), true)["data"];
 
-		self::assertInstanceOf(Message::class, $result[0]);
-		self::assertEquals($params["id"], $result[0]->id);
+		self::assertEquals($params["id"], $result[0]["id"]);
 	}
 
-	public function testCreateMessage($params = ["chat_id" => 2, "owner" => 3, "text" => "Text", "recipient" => 4])
+	/**
+	 * @param array $params
+	 * @return void
+	 * @throws Exception
+	 */
+	public function testCreateMessage(array $params = ["chat_id" => 2, "owner_id" => 3, "text" => "Text", "recipient_id" => 4]): void
 	{
 		$chatApi = new ChatApi();
 		$_POST = $params;
 
-		$result = $chatApi->createMessage()["data"];
+		$result = json_decode($chatApi->createMessage(), true)["data"];
 
-		self::assertInstanceOf(Message::class, $result[0]);
-		self::assertEquals($params["chat_id"], $result[0]->chatId);
-		self::assertEquals($params["owner"], $result[0]->ownerId);
-		self::assertEquals($params["text"], $result[0]->text);
-		self::assertEquals($params["recipient"], $result[0]->recipient);
+		self::assertEquals($params["chat_id"], $result[0]["chat_id"]);
+		self::assertEquals($params["owner_id"], $result[0]["owner_id"]);
+		self::assertEquals($params["text"], $result[0]["text"]);
+		self::assertEquals($params["recipient_id"], $result[0]["recipient_id"]);
 	}
 }

@@ -3,13 +3,13 @@
 namespace Nigr\Tests\Unit\Models;
 
 use ArgumentCountError;
+use DateTimeImmutable;
 use Nigr\Chat\Models\Message;
 use PHPUnit\Framework\TestCase;
 use TypeError;
 
 class MessageTest extends TestCase
 {
-
 	/**
 	 * @param array $args
 	 * @param $expected
@@ -21,19 +21,21 @@ class MessageTest extends TestCase
 		$chat = new Message(...$args);
 
 		$this->assertEquals($expected[0], $chat->id);
-		$this->assertEquals($expected[1], $chat->chatId);
-		$this->assertEquals($expected[2], $chat->ownerId);
+		$this->assertEquals($expected[1], $chat->chat_id);
+		$this->assertEquals($expected[2], $chat->owner_id);
 		$this->assertEquals($expected[3], $chat->text);
-		$this->assertEquals($expected[4], $chat->recipient);
-		$this->assertEquals($expected[5], $chat->createdAt);
-		$this->assertEquals($expected[6], $chat->updatedAt);
+		$this->assertEquals($expected[4], $chat->recipient_id);
+		$this->assertEquals($expected[5], $chat->created_at);
+		$this->assertEquals($expected[6], $chat->updated_at);
 	}
 
 	public static function getChatArguments(): array
 	{
+		$date = new DateTimeImmutable();
+
 		return [
-			[[1, 2, 3, "text", 4, "", ""], [1, 2, 3, "text", 4, "", ""]],
-			[["1", 2, "3", "text", "4", 999, "999"], [1, 2, 3, "text", 4, "999", "999"]],
+			[[1, 2, 3, "text", 4, $date, $date], [1, 2, 3, "text", 4, $date, $date]],
+			[["1", 2, "3", "text", null, null, null], [1, 2, 3, "text", null, null, null]],
 		];
 	}
 
@@ -79,7 +81,7 @@ class MessageTest extends TestCase
 	public static function getArgumentsForCountError(): array
 	{
 		return [
-			[[1, 2, 3, "text", 4, ""]],
+			[[1, 2, 3, "text", 4, null]],
 		];
 	}
 }

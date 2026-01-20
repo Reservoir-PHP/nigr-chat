@@ -41,65 +41,82 @@ class ChatApi
 
 	/**
 	 * @param array $params
-	 * @return array
+	 * @return string
+	 * @throws Exception
 	 */
-	public function getChats(array $params): array
+	public function getChats(array $params): string
 	{
 		$result = $this->chatRepository->get($params);
 
+		$data = array_map(fn(Chat $chat) => $chat->toArray(), $result);
+
 		if (!empty($result)) {
-			return ["status" => true, "code" => 200, "message" => "Chats found!", "data" => $result];
+			return $this->json(["status" => true, "code" => 200, "message" => "Chats found!", "data" => $data]);
 		} else {
-			return ["status" => false, "code" => 404, "message" => "Chats not found!", "data" => $result];
+			return $this->json(["status" => false, "code" => 404, "message" => "Chats not found!", "data" => $result]);
 		}
 	}
 
 	/**
-	 * @return array
+	 * @return string
+	 * @throws Exception
 	 */
-	public function createChat(): array
+	public function createChat(): string
 	{
 		$params = json_decode(file_get_contents("php://input"), true) ?? $_POST;
 
 		$result = $this->chatRepository->post($params);
 		$id = $result[0]->id;
 
+		$data = array_map(fn(Chat $chat) => $chat->toArray(), $result);
+
 		if (!empty($result)) {
-			return ["status" => true, "code" => 201, "message" => "Chat $id created!", "data" => $result];
+			return $this->json(["status" => true, "code" => 201, "message" => "Chat $id created!", "data" => $data]);
 		} else {
-			return ["status" => false, "code" => 400, "message" => "Chat not created!", "data" => $result];
+			return $this->json(["status" => false, "code" => 400, "message" => "Chat not created!", "data" => $result]);
 		}
 	}
 
 	/**
 	 * @param array $params
-	 * @return array
+	 * @return string
+	 * @throws Exception
 	 */
-	public function getMessages(array $params): array
+	public function getMessages(array $params): string
 	{
 		$result = $this->messageRepository->get($params);
 
+		$data = array_map(fn(Message $chat) => $chat->toArray(), $result);
+
 		if (!empty($result)) {
-			return ["status" => true, "code" => 200, "message" => "Messages found!", "data" => $result];
+			return $this->json(["status" => true, "code" => 200, "message" => "Messages found!", "data" => $data]);
 		} else {
-			return ["status" => false, "code" => 404, "message" => "Messages not found!", "data" => $result];
+			return $this->json(["status" => false, "code" => 404, "message" => "Messages not found!", "data" => $result]);
 		}
 	}
 
 	/**
-	 * @return array
+	 * @return string
+	 * @throws Exception
 	 */
-	public function createMessage(): array
+	public function createMessage(): string
 	{
 		$params = json_decode(file_get_contents("php://input"), true) ?? $_POST;
 
 		$result = $this->messageRepository->post($params);
 		$id = $result[0]->id;
 
+		$data = array_map(fn(Message $chat) => $chat->toArray(), $result);
+
 		if (!empty($result)) {
-			return ["status" => true, "code" => 201, "message" => "Message $id created!", "data" => $result];
+			return $this->json(["status" => true, "code" => 201, "message" => "Message $id created!", "data" => $data]);
 		} else {
-			return ["status" => false, "code" => 400, "message" => "Message not created!", "data" => $result];
+			return $this->json(["status" => false, "code" => 400, "message" => "Message not created!", "data" => $result]);
 		}
+	}
+
+	private function json(array $response): string
+	{
+		return json_encode($response, JSON_UNESCAPED_UNICODE | JSON_PARTIAL_OUTPUT_ON_ERROR);
 	}
 }
