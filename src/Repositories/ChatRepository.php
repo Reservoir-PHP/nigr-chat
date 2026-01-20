@@ -2,6 +2,7 @@
 
 namespace Nigr\Chat\Repositories;
 
+use Exception;
 use Nigr\Chat\Helpers\DataBase;
 use Nigr\Chat\Models\Chat;
 use PDO;
@@ -20,6 +21,7 @@ class ChatRepository
 	/**
 	 * @param array $params
 	 * @return Chat[]
+	 * @throws Exception
 	 */
 	public function get(array $params): array
 	{
@@ -30,19 +32,13 @@ class ChatRepository
 		$statement->execute($params);
 		$chats = $statement->fetchAll(PDO::FETCH_ASSOC);
 
-		return array_map(fn($chat) => new Chat(
-			(int)$chat["id"],
-			(int)$chat["lot_id"],
-			(int)$chat["contractor_id"],
-			(int)$chat["executor_id"],
-			(string)$chat["created_at"],
-			(string)$chat["updated_at"],
-		), $chats);
+		return array_map(fn($chat) => Chat::fromArray($chat), $chats);
 	}
 
 	/**
 	 * @param array $params
 	 * @return Chat[]
+	 * @throws Exception
 	 */
 	public function post(array $params): array
 	{

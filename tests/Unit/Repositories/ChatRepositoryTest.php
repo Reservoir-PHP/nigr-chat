@@ -2,6 +2,7 @@
 
 namespace Nigr\Tests\Unit\Repositories;
 
+use Exception;
 use Nigr\Chat\Helpers\DataBase;
 use Nigr\Chat\Models\Chat;
 use Nigr\Chat\Repositories\ChatRepository;
@@ -12,7 +13,13 @@ use ReflectionClass;
 
 class ChatRepositoryTest extends TestCase
 {
-	public function testGet($params = ["id" => 1], $expected = Chat::class)
+	/**
+	 * @param array $params
+	 * @param string $expected
+	 * @return void
+	 * @throws Exception
+	 */
+	public function testGet(array $params = ["id" => 1], string $expected = Chat::class): void
 	{
 		$pdoStatementMock = $this->getMockBuilder(PDOStatement::class)->disableOriginalConstructor()->getMock();
 		$pdoStatementMock->method("execute")->willReturn(true);
@@ -47,7 +54,13 @@ class ChatRepositoryTest extends TestCase
 		$this->assertInstanceOf($expected, $repository->get($params)[0]);
 	}
 
-	public function testPost($params = ["id" => 1, "lot_id" => 2, "contractor_id" => 3, "executor_id" => 4], $expected = Chat::class)
+	/**
+	 * @param array $params
+	 * @param string $expected
+	 * @return void
+	 * @throws Exception
+	 */
+	public function testPost(array $params = ["id" => 1, "lot_id" => 2, "contractor_id" => 3, "executor_id" => 4], string $expected = Chat::class): void
 	{
 		$pdoStatementMock = $this->getMockBuilder(PDOStatement::class)->disableOriginalConstructor()->getMock();
 		$pdoStatementMock->method("execute")->willReturn(true);

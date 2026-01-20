@@ -2,6 +2,7 @@
 
 namespace Nigr\Tests\Unit\Repositories;
 
+use Exception;
 use Nigr\Chat\Helpers\DataBase;
 use Nigr\Chat\Models\Message;
 use Nigr\Chat\Repositories\MessageRepository;
@@ -12,7 +13,13 @@ use ReflectionClass;
 
 class MessageRepositoryTest extends TestCase
 {
-	public function testGet($params = ["id" => 1], $expected = Message::class)
+	/**
+	 * @param array $params
+	 * @param string $expected
+	 * @return void
+	 * @throws Exception
+	 */
+	public function testGet(array $params = ["id" => 1], string $expected = Message::class): void
 	{
 		$pdoStatement = $this->getMockBuilder(PDOStatement::class)->disableOriginalConstructor()->getMock();
 		$pdoStatement->method("execute")->willReturn(true);
@@ -21,9 +28,9 @@ class MessageRepositoryTest extends TestCase
 				[
 					"id" => 1,
 					"chat_id" => 2,
-					"owner" => 3,
+					"owner_id" => 3,
 					"text" => "",
-					"recipient" => 4,
+					"recipient_id" => 4,
 					"created_at" => "",
 					"updated_at" => ""
 				]
@@ -43,7 +50,14 @@ class MessageRepositoryTest extends TestCase
 		$this->assertInstanceOf($expected, $result[0]);
 	}
 
-	public function testPost($params = ["id" => 1, "chat_id" => 2, "owner" => 3, "text" => "", "recipient" => 4], $expected = Message::class) {
+	/**
+	 * @param array $params
+	 * @param string $expected
+	 * @return void
+	 * @throws Exception
+	 */
+	public function testPost(array $params = ["id" => 1, "chat_id" => 2, "owner" => 3, "text" => "", "recipient" => 4], string $expected = Message::class): void
+	{
 		$pdoStatementMock = $this->getMockBuilder(PDOStatement::class)->disableOriginalConstructor()->getMock();
 		$pdoStatementMock->method("execute")->willReturn(true);
 		$pdoStatementMock->method("fetchAll")->willReturn(
@@ -51,9 +65,9 @@ class MessageRepositoryTest extends TestCase
 				[
 					"id" => 1,
 					"chat_id" => 2,
-					"owner" => 3,
+					"owner_id" => 3,
 					"text" => "",
-					"recipient" => 4,
+					"recipient_id" => 4,
 					"created_at" => "",
 					"updated_at" => ""
 				]
