@@ -25,7 +25,7 @@ Chats:
 
 - id: number
 - lot_id: number
-- contractor_id: number
+- owner_id: number
 - executor_id: number
 - created_at?: timestamp
 - updated_at?: timestamp
@@ -42,8 +42,8 @@ Messages:
 
 ## Data structure
 
-- chat get = id?, lot_id?, contractor_id?, executor_id?
-- chat post = lot_id, contractor_id, executor_id,
+- chat get = id?, lot_id?, owner_id?, executor_id?
+- chat post = lot_id, owner_id, executor_id,
 - message get = id?, chat_id?, owner?, text?, recipient?
 - message post = chat_id, owner, text, recipient?
 

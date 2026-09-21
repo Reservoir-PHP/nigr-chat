@@ -55,7 +55,7 @@ class ChatApiTest extends TestCase
 					"status" => true,
 					"code" => 200,
 					"message" => "Chats found!",
-					"data" => [["id" => 1, "lot_id" => 2, "contractor_id" => 3, "executor_id" => 4, "created_at" => null, "updated_at" => null]]
+					"data" => [["id" => 1, "lot_id" => 2, "owner_id" => 3, "executor_id" => 4, "created_at" => null, "updated_at" => null]]
 				]
 			],
 			[
@@ -105,7 +105,7 @@ class ChatApiTest extends TestCase
 					"status" => true,
 					"code" => 201,
 					"message" => "Chat 1 created!",
-					"data" => [["id" => 1, "lot_id" => 2, "contractor_id" => 3, "executor_id" => 4, "created_at" => null, "updated_at" => null]]
+					"data" => [["id" => 1, "lot_id" => 2, "owner_id" => 3, "executor_id" => 4, "created_at" => null, "updated_at" => null]]
 				]
 			],
 			[

@@ -22,7 +22,7 @@ class ChatTest extends TestCase
 
 		$this->assertEquals($expected[0], $chat->id);
 		$this->assertEquals($expected[1], $chat->lot_id);
-		$this->assertEquals($expected[2], $chat->contractor_id);
+		$this->assertEquals($expected[2], $chat->owner_id);
 		$this->assertEquals($expected[3], $chat->executor_id);
 		$this->assertEquals($expected[4], $chat->created_at);
 		$this->assertEquals($expected[5], $chat->updated_at);
