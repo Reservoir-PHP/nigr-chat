@@ -79,7 +79,7 @@ class ChatApiTest extends TestCase
 	 * @return void
 	 * @throws Exception
 	 */
-	public function testCreateChat(array $params = ["lot_id" => 2, "contractor_id" => 3, "executor_id" => 4]): void
+	public function testCreateChat(array $params = ["lot_id" => 2, "owner_id" => 3, "executor_id" => 4]): void
 	{
 		$chatApi = new ChatApi();
 		$_POST = $params;
@@ -87,7 +87,7 @@ class ChatApiTest extends TestCase
 		$result = json_decode($chatApi->createChat(), true)["data"];
 
 		self::assertEquals($params["lot_id"], $result[0]["lot_id"]);
-		self::assertEquals($params["contractor_id"], $result[0]["contractor_id"]);
+		self::assertEquals($params["owner_id"], $result[0]["owner_id"]);
 		self::assertEquals($params["executor_id"], $result[0]["executor_id"]);
 	}
 

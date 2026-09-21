@@ -28,7 +28,7 @@ class ChatRepositoryTest extends TestCase
 				[
 					"id" => 1,
 					"lot_id" => 2,
-					"contractor_id" => 3,
+					"owner_id" => 3,
 					"executor_id" => 4,
 					"created_at" => "",
 					"updated_at" => ""
@@ -60,7 +60,7 @@ class ChatRepositoryTest extends TestCase
 	 * @return void
 	 * @throws Exception
 	 */
-	public function testPost(array $params = ["id" => 1, "lot_id" => 2, "contractor_id" => 3, "executor_id" => 4], string $expected = Chat::class): void
+	public function testPost(array $params = ["id" => 1, "lot_id" => 2, "owner_id" => 3, "executor_id" => 4], string $expected = Chat::class): void
 	{
 		$pdoStatementMock = $this->getMockBuilder(PDOStatement::class)->disableOriginalConstructor()->getMock();
 		$pdoStatementMock->method("execute")->willReturn(true);
@@ -69,7 +69,7 @@ class ChatRepositoryTest extends TestCase
 				[
 					"id" => 1,
 					"lot_id" => 2,
-					"contractor_id" => 3,
+					"owner_id" => 3,
 					"executor_id" => 4,
 					"created_at" => "",
 					"updated_at" => ""
